@@ -1,13 +1,10 @@
-import { useState } from 'react'
-
+import { imageResources } from "./assets/imageResources";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <img src = {imageResources.Logo} alt ="logo"/>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
