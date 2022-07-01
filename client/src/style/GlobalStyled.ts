@@ -44,7 +44,7 @@ box-sizing:border-box;
   flex-direction:row;
   min-height:100vh;
   width:100%;
-  background-color:var(--clr_body_bg_light);
+  background-color:${({theme}) => theme.body.backgroundColor};
   font-family: 'Quicksand', sans-serif;
   }
 `;

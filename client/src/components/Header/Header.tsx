@@ -4,12 +4,23 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdOutlineInsertChart } from "react-icons/md";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { MdReplay } from "react-icons/md";
+import { HiOutlineMoon } from "react-icons/hi";
+import { MdOutlineWbSunny } from "react-icons/md";
 import HeaderStyled from "./Header.styled";
 
-function Header() {
+type HeaderProps = {
+  themeToggler: any;
+  theme: any;
+};
+
+function Header({ themeToggler, theme }: HeaderProps) {
   let itemCount = 3;
-  const controllerStyled = {
+  const moonStyled = {
     color: "var(--clr_header_button_light)",
+    fontSize: "1.75rem",
+  };
+  const sunStyled = {
+    color: "var(--clr_header_button_dark)",
     fontSize: "1.75rem",
   };
   const cartStyled = {
@@ -24,11 +35,18 @@ function Header() {
   };
   return (
     <HeaderStyled>
-      <img src={imageResources.Logo} alt="Logo" />
+      <div className="header-top">
+        <img src={imageResources.Logo} alt="Logo" />
+        {theme === "lightTheme" ? (
+          <HiOutlineMoon onClick={themeToggler} style={moonStyled} />
+        ) : (
+          <MdOutlineWbSunny onClick={themeToggler} style={sunStyled} />
+        )}
+      </div>
       <div className="controller">
-        <AiOutlineUnorderedList style={controllerStyled} />
-        <MdReplay style={controllerStyled} />
-        <MdOutlineInsertChart style={controllerStyled} />
+        <AiOutlineUnorderedList />
+        <MdReplay />
+        <MdOutlineInsertChart />
       </div>
       <div className="cart">
         <MdOutlineShoppingCart style={cartStyled} />
