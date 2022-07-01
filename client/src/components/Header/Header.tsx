@@ -1,4 +1,4 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import { imageResources } from "../../assets/imageResources";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdOutlineInsertChart } from "react-icons/md";
@@ -14,6 +14,8 @@ type HeaderProps = {
 };
 
 function Header({ themeToggler, theme }: HeaderProps) {
+  // declare navigate variable for routing between pages
+
   let itemCount = 3;
   const moonStyled = {
     color: "var(--clr_header_button_light)",
@@ -46,7 +48,10 @@ function Header({ themeToggler, theme }: HeaderProps) {
       <div className="controller">
         <div className="controller-container">
           <div className="controller-icon">
-            <AiOutlineUnorderedList />
+            <NavLink to="">
+              <div className="decoration"></div>
+              <AiOutlineUnorderedList />
+            </NavLink>
           </div>
           <div className="triangle"></div>
           <div className="tagName">
@@ -55,7 +60,10 @@ function Header({ themeToggler, theme }: HeaderProps) {
         </div>
         <div className="controller-container">
           <div className="controller-icon">
-            <MdReplay />
+            <NavLink to="history">
+              <div className="decoration"></div>
+              <MdReplay />
+            </NavLink>
           </div>
           <div className="triangle"></div>
           <div className="tagName">
@@ -64,7 +72,10 @@ function Header({ themeToggler, theme }: HeaderProps) {
         </div>
         <div className="controller-container">
           <div className="controller-icon">
-            <MdOutlineInsertChart />
+            <NavLink to="statistics">
+              <div className="decoration"></div>
+              <MdOutlineInsertChart />
+            </NavLink>
           </div>
           <div className="triangle"></div>
           <div className="tagName">
