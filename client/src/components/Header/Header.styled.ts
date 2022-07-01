@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.nav`
-  padding: 1em 1.25em;
+  padding: 1em 1.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,9 +33,45 @@ const HeaderStyled = styled.nav`
     background-color: var(--clr_item_bg_light);
     position:absolute;
   }
-  .controller > *{
+
+  .controller-container > :first-child{
+    position:relative;
     font-size:1.75rem;
     color:${({theme}) => theme.header.button.backgroundColor}
+  }
+  .controller-container:hover{
+    .tagName,.triangle{
+      display:flex;
+    }
+  }
+  
+  .controller-container{
+    display: flex;
+    align-items: center;
+    .tagName,.triangle{
+      display:none;
+    }
+  }
+  .tagName{
+    position: absolute;
+    left:6.5em;
+    background-color: ${({theme}) => theme.header.button.backgroundColor};
+    color:${({theme}) => theme.header.backgroundColor};
+    padding:0.25em 0.6em;
+    font-weight:500;
+    font-size:0.75rem;
+    border-radius:5px;
+  }
+  .triangle{
+    z-index:2;
+    position: absolute;
+    width:0;
+    height:0;
+    border:3px solid transparent;
+    border-top:0;
+    border-bottom:6px solid ${({theme}) => theme.header.button.backgroundColor};
+    left:4.5em;
+    transform:rotate(270deg);
   }
 `;
 

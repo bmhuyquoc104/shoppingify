@@ -44,9 +44,33 @@ function Header({ themeToggler, theme }: HeaderProps) {
         )}
       </div>
       <div className="controller">
-        <AiOutlineUnorderedList />
-        <MdReplay />
-        <MdOutlineInsertChart />
+        <div className="controller-container">
+          <div className="controller-icon">
+            <AiOutlineUnorderedList />
+          </div>
+          <div className="triangle"></div>
+          <div className="tagName">
+            <p>items</p>
+          </div>
+        </div>
+        <div className="controller-container">
+          <div className="controller-icon">
+            <MdReplay />
+          </div>
+          <div className="triangle"></div>
+          <div className="tagName">
+            <p>history</p>
+          </div>
+        </div>
+        <div className="controller-container">
+          <div className="controller-icon">
+            <MdOutlineInsertChart />
+          </div>
+          <div className="triangle"></div>
+          <div className="tagName">
+            <p>statistics</p>
+          </div>
+        </div>
       </div>
       <div className="cart">
         <MdOutlineShoppingCart style={cartStyled} />
