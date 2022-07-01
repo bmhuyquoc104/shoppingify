@@ -1,6 +1,5 @@
-import { imageResources } from "./assets/imageResources";
 import Header from "./components/Header/Header";
-import GlobalStyled from "./components/GlobalStyled";
+import GlobalStyled from "./style/GlobalStyled";
 function App() {
   return (
     <>
