@@ -1,0 +1,196 @@
+[
+  {
+    "id": 1,
+    "category": "Fruit and vegetables",
+    "name": "Avocado",
+    "note": "Nutrient-dense foods are those that provide substantial amounts of vitamins, minerals and other nutrients with relatively few calories. One-third of a medium avocado (50 g) has 80 calories and contributes nearly 20 vitamins and minerals, making it a great nutrient-dense food choice.",
+    "image": "https://i.imgur.com/uBB2NZD.jpg"
+  },
+  {
+    "id": 2,
+    "category": "Fruit and vegetables",
+    "name": "Banana",
+    "note": "One serving, or one medium ripe banana, provides about 110 calories, 0 gram fat, 1 gram protein, 28 grams carbohydrate, 15 grams sugar (naturally occurring), 3 grams fiber, and 450 mg potassium.",
+    "image": "https://i.imgur.com/b8LTl3w.jpg"
+  },
+  {
+    "id": 3,
+    "category": "Fruit and vegetables",
+    "name": "Bunch of carrots 5pcs",
+    "note": "Carrots are a particularly good source of beta carotene, fiber, vitamin K1, potassium, and antioxidants ( 1 ). They also have a number of health benefits. They're a weight-loss-friendly food and have been linked to lower cholesterol levels and improved eye health.",
+    "image": "https://i.imgur.com/J1kd22D.jpg"
+  },
+  {
+    "id": 4,
+    "category": "Fruit and vegetables",
+    "name": "Pre-cooked corn 450g",
+    "note": "Keep in a clean, dry and cool place. Ingredients Precooked White Corn Meal Enriched (Niacin, Iron, Riboflavin, Thiamin and Folic Acid).",
+    "image": "https://i.imgur.com/jn7lCX0.jpg"
+  },
+  {
+    "id": 5,
+    "category": "Fruit and vegetables",
+    "name": "Mandarin Nadorcott",
+    "note": "One medium mandarin (88 grams) packs the following nutrients ( 5 ): Calories: 47. Carbs: 12 grams. Protein: 0.7 grams.",
+    "image": "https://i.imgur.com/SOPDgKi.jpg"
+  },
+  {
+    "id": 6,
+    "category": "Fruit and vegetables",
+    "name": "Piele De Sapo Melon",
+    "note": "Piel de sapo or Santa Claus melon is a Spanish melon that's widely grown in La Mancha and Murcia. These melons are pale green to white, with a succulent texture and a slightly sweet flavor. The skin on the exterior is wrinkled, which is typical for a Santa Claus melon. They're in season during late spring and summer.",
+    "image": "https://i.imgur.com/YcwQaHE.jpg"
+  },
+  {
+    "id": 7,
+    "category": "Fruit and vegetables",
+    "name": "Watermelon",
+    "note": "Here are the nutrients in 1 cup (152 grams) of raw, diced watermelon: Calories: 46. Carbs: 11.5 grams. Fiber: 0.6 grams. Sugar: 9.4 grams.",
+    "image": "https://i.imgur.com/3Je0ihI.jpg"
+  },
+  {
+    "id": 8,
+    "category": "Fruit and vegetables",
+    "name": "Durian",
+    "note": "Durian contains vitamins such as vitamin-C, folic acid, thiamin, riboflavin, niacin, B6 and vitamin A. Important minerals such as potassium, iron, calcium, magnesium, sodium, zinc, phosphorus are also found in durian. It also contains nutrients such as phytonutrients, water, protein and beneficial dietary fibre.",
+    "image": "https://i.imgur.com/xsZ8L9D.jpg"
+  },{
+    "id": 9,
+    "category": "Meat and Fish",
+    "name": "Chicken leg box",
+    "note": "One skinless, boneless chicken drumstick (44 grams) contains (4): Calories: 76. Protein: 12.4 grams. Carbs: 0 grams. Fat: 2.5 grams.",
+    "image": "https://i.imgur.com/xsZ8L9D.jpg"
+  },{
+    "id": 10,
+    "category": "Meat and Fish",
+    "name": "Pork fillets 450g",
+    "note": "There are 122 calories in Roasted Pork Tenderloin coming from 77% protein, 0% carbs, 23% fat, and 0% alcohol. A pie chart showing the macro nutrient componenets for Roasted Pork Tenderloin. This food consists of 70.06% water, 26.4% protein, 0% carbs, 3.54% fat, and 0% alcohol.",
+    "image": "https://i.imgur.com/xsZ8L9D.jpg"
+  },{
+    "id": 11,
+    "category": "Meat and Fish",
+    "name": "Salmon 1kg",
+    "note": "Salmon is a great source of protein, healthy fats, and various essential vitamins and minerals.",
+    "image": "https://i.imgur.com/xsZ8L9D.jpg"
+  },{
+    "id": 12,
+    "category": "Meat and Fish",
+    "name": "Lamb 1kg",
+    "note": "A three-ounce cut of cooked lamb delivers about 25 grams of protein, plus good quantities of potassium and vitamin B-12. It's also a good source of iron, magnesium, selenium, and omega-3 fatty acids. While that's good news, lamb is also a source of saturated fat.",
+    "image": "https://i.imgur.com/xsZ8L9D.jpg"
+  },{
+    "id": 13,
+    "category": "Beverages",
+    "name": "Lipton & Lipton Iced Tea",
+    "note": "If you drink tea, you've probably had a Lipton tea bag at some point. It's an affordable, reliable black tea, whether you have it in hot, iced, or sweet tea form. There are plenty of health benefits of tea, too, so drink up!",
+    "image": "https://i.imgur.com/xphGc4N.jpg"
+  },{
+    "id": 14,
+    "category": "Beverages",
+    "name": "Gatorade",
+    "note": "Gatorade is the leader of the sports drink game, so it's no surprise it's one of the country's most famous beverages. With its ability to turn your tongue blue and its decidedly nondescript flavors (Glacier Freeze, anyone?), Gatorade has made a name for itself in the bottled drink market. If you really want to quench your thirst, though, check out these healthy foods that are better for hydration than Gatorade.",
+    "image": "https://i.imgur.com/5sm6oPn.jpg"
+  },{
+    "id": 15,
+    "category": "Beverages",
+    "name": "Diet Coke",
+    "note": "Diet soda is super popular in the United States, and it shouldn't be a surprise that Diet Coke takes the fifth spot on this list. You probably have a friend who swears by Diet Coke, or maybe you love the taste of it yourself. Either way, you've definitely heard of this drink.",
+    "image": "https://i.imgur.com/xaoZkpO.jpg"
+  },{
+    "id": 16,
+    "category": "Beverages",
+    "name": "Dr Pepper",
+    "note": "Dr Pepper—yep, it's stylized without a period—has a unique taste, so it's not surprising this one is so well-known. According to its website, the soda features a unique blend of 23 flavors, but the company hasn't revealed just what those 23 flavors are.",
+    "image": "https://i.imgur.com/zNhOmG6.jpg"
+  },{
+    "id": 17,
+    "category": "Beverages",
+    "name": "Sprite",
+    "note": "Another offering from the Coca-Cola family, Sprite is almost as well-known as its darker-hued soda counterparts. It doesn't really taste like the lemon and lime flavor it promises, but if you want a caffeine-free soda, this is the most famous one.",
+    "image": "https://i.imgur.com/i3zKivP.jpg"
+  },{
+    "id": 18,
+    "category": "Beverages",
+    "name": "Coca-Cola",
+    "note": "Coming in at second place is Coca-Cola. Who hasn't had this soda, whether at the movies, at a fast-food restaurant, or just straight from the can? It's hard to beat the refreshing taste of an ice-cold Coke.",
+    "image": "https://i.imgur.com/lrKXUTl.jpg"
+  },{
+    "id": 19,
+    "category": "Beverages",
+    "name": "Pepsi",
+    "note": "While Coke ranks higher than Pepsi on YouGov's list of most popular drinks, it comes in at #1 on the list of the country's most famous beverages. That's not much of a surprise, though, considering that celebrities ranging from Britney Spears to One Direction have appeared in ads for the soda.",
+    "image": "https://i.imgur.com/5OCnjOe.jpg"
+  },{
+    "id": 20,
+    "category": "Beverages",
+    "name": "Sunkist",
+    "note": "Durian contains vitamins such as vitamin-C, folic acid, thiamin, riboflavin, niacin, B6 and vitamin A. Important minerals such as potassium, iron, calcium, magnesium, sodium, zinc, phosphorus are also found in durian. It also contains nutrients such as phytonutrients, water, protein and beneficial dietary fibre.",
+    "image": "https://i.imgur.com/HkPy2OA.jpg"
+  },{
+    "id": 21,
+    "category": "Beverages",
+    "name": "Tropicana",
+    "note": "Durian contains vitamins such as vitamin-C, folic acid, thiamin, riboflavin, niacin, B6 and vitamin A. Important minerals such as potassium, iron, calcium, magnesium, sodium, zinc, phosphorus are also found in durian. It also contains nutrients such as phytonutrients, water, protein and beneficial dietary fibre.",
+    "image": "https://i.imgur.com/0jLnEdP.jpg"
+  },{
+    "id": 22,
+    "category": "Beverages",
+    "name": "Minute Maid",
+    "note": "Durian contains vitamins such as vitamin-C, folic acid, thiamin, riboflavin, niacin, B6 and vitamin A. Important minerals such as potassium, iron, calcium, magnesium, sodium, zinc, phosphorus are also found in durian. It also contains nutrients such as phytonutrients, water, protein and beneficial dietary fibre.",
+    "image": "https://i.imgur.com/j42PHMn.jpg"
+  },{
+    "id": 23,
+    "category": "Beverages",
+    "name": "Snapple",
+    "note": "Snapple's iced tea bottles are definitely famous. How many times have you been tempted by their yellow and orange labels at the convenience store, or when buying lunch on the go? Plus, Snapple deserves its renown just for the fun facts it puts underneath its bottle caps. You never know what you're going to learn.",
+    "image": "https://i.imgur.com/Gw6rq7A.jpg"
+  },{
+    "id": 24,
+    "category": "Pets",
+    "name": "Dogs",
+    "note": "Dogs are probably the choice that comes to mind immediately when thinking of the best animal to keep as a pet. Many dogs are good for cuddling and are probably overall the most friendly of the different common house pets, they aren’t always the best choice for every situation.",
+    "image": "https://i.imgur.com/QhpWHTO.jpg"
+  },{
+    "id": 25,
+    "category": "Pets",
+    "name": "Cats",
+    "note": "Cats can be a great low-maintenance pet for beginners. They are great for those who live in an apartment but still want a pet that doesn’t live in a tank or cage. Cats do have a reputation for having an independent nature, but that isn’t always a negative. Cats are often a better choice than dogs if you work long hours or are otherwise away from the home for extended periods.",
+    "image": "https://i.imgur.com/FQGmTUR.jpg"
+  },{
+    "id": 26,
+    "category": "Pets",
+    "name": "Guiena Pigs",
+    "note": "Guinea pigs may not be a choice that comes immediately to mind when selecting a pet for your household, but they are a charming and fun choice. They are friendly and social, are easy to handle, and quickly learn to interact with their family.",
+    "image": "https://i.imgur.com/Hl83qVe.jpg"
+  },{
+    "id": 27,
+    "category": "Pets",
+    "name": "Bunny",
+    "note": "If you are interested in a pet for cuddling, a rabbit may be a perfect choice. It may take a little while for your pet rabbit to get comfortable being handled. While a good choice for children, it is important to take the time to show the child how to gently handle the rabbit.",
+    "image": "https://i.imgur.com/HGATex6.jpg"
+  },{
+    "id": 28,
+    "category": "Pets",
+    "name": "Rats",
+    "note": "You may be surprised to learn that rats are great pets for beginners. They are naturally clean, are quick learners, and are social, affectionate animals. One strong argument for rats as opposed to other small pets such as hamsters is that they keep the same clock as people. While many rodents sleep during the day and are active at night, rats are alert and awake during the same time as the rest of the family.",
+    "image": "https://i.imgur.com/n62nVr9.jpg"
+  },{
+    "id": 29,
+    "category": "Pets",
+    "name": "Fish",
+    "note": "If you are interested in a pet for anxiety, a fish may be a perfect choice. Setting up an aquarium and tending to the fish inside can become an engrossing hobby. You can have anything from a smaller tank with a single Betta to a larger aquarium, decorated with live plants and housing schooling species of fish, such as tetras. The gentle sound of water moving through the filter as you watch the fish move through their environment will become a pleasant part of your day.",
+    "image": "https://i.imgur.com/arYhTex.jpg"
+  },{
+    "id": 30,
+    "category": "Pets",
+    "name": "Hamsters",
+    "note": "Hamsters are often considered an excellent pet, and they can be. It is important to realize that although they are small, they do require regular care. Like many small pets, they tend to messiness. Plan to spend a few minutes each day cleaning out their enclosure to prevent odors from developing.",
+    "image": "https://i.imgur.com/bBnf4vv.jpg"
+  },{
+    "id": 31,
+    "category": "Pets",
+    "name": "Birds",
+    "note": "Birds make fun pets for folks who aren’t looking for cuddling. Depending on the type of bird you select, you can enjoy them for their sweet voice, beautiful plumage, or colorful personality. Birds are a great choice for someone looking for low-maintenance companionship.",
+    "image": "https://i.imgur.com/k8IP9FV.jpg"
+  }
+]
