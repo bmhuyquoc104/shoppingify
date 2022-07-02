@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import ItemList from "../components/ItemList/ItemList";
 function Home() {
-  return (
-    <div>Home</div>
-  )
+  return <ItemList></ItemList>;
 }
 
-export default Home
+export default Home;
