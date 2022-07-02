@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/server.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
+    "start": "node build/server.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\""
   },
   "keywords": [],
   "author": "",
