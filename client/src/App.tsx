@@ -15,7 +15,6 @@ function App() {
     <ThemeProvider theme={themeMode}>
       <GlobalStyled />
       <Header themeToggler={themeToggler} theme={theme} />
-      <h1>Hello world</h1>
       <Routes>
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/history" element = {<History/>}/>

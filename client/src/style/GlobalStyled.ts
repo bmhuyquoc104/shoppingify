@@ -28,7 +28,7 @@ box-sizing:border-box;
   --clr_button_bg_dark:#f9a109;
   --clr_heading1_text_dark:#cbccc5;
   --clr_text_dark:#ffffff;
-  --clr_body_bg_dark:#050501;
+  --clr_body_bg_dark:#1e1a1c;
   --clr_plus_color_dark:#3e3e3b;
   --clr_text_placeholder_color_dark:#424242;
   --clr_item_bg_dark:#EB5757;
