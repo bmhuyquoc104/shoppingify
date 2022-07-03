@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ItemListStyled = styled.div`
+const ItemListStyled = styled.section`
   padding:0 3em;
   width: 100%;
   display: flex;
