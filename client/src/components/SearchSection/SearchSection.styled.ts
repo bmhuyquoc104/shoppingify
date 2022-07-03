@@ -56,6 +56,7 @@ const SearchSectionStyled = styled.section`
   }
   @media (max-width: 927px) {
     gap:1em;
+    justify-content: revert;
     flex-direction: column;
     .search-button,h1 {
       width: 80%;
