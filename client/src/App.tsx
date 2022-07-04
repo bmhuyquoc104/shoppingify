@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import History from "./pages/History";
 import Statistics from "./pages/Statistics";
+import ItemDetail from "./components/ItemDetail/ItemDetail";
 function App() {
   const [theme, themeToggler] = useTheme();
   const themeMode = theme === "lightTheme" ? lightTheme : darkTheme;
@@ -16,10 +17,11 @@ function App() {
       <GlobalStyled />
       <Header themeToggler={themeToggler} theme={theme} />
       <Routes>
-        <Route path = "/" element = {<Home/>}/>
-        <Route path = "/history" element = {<History/>}/>
-        <Route path = "/statistics" element = {<Statistics/>}/>
-        <Route path = "*" element = {<NotFound/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/item/:id" element={<ItemDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </ThemeProvider>
   );
