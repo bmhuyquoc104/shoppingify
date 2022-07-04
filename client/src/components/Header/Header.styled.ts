@@ -108,6 +108,9 @@ const HeaderStyled = styled.nav`
     left: 4.5em;
     transform: rotate(270deg);
   }
+  @media (max-width:480px){
+    width:4.2em;
+  }
 `;
 
 export default HeaderStyled;

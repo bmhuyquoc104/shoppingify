@@ -7,7 +7,7 @@ function Home() {
     <PageContainerStyled>
       <SearchSection />
       <ItemList />
-      <ShoppingCart/>
+      <ShoppingCart />
     </PageContainerStyled>
   );
 }

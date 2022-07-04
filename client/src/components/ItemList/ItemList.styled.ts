@@ -49,20 +49,26 @@ const ItemListStyled = styled.section`
       width: 10em;
     }
   }
+
+  @media (max-width:750px){
+        padding: 2em 1.25em;
+
+  }
+
   @media (max-width: 530px) and (min-width: 400px) {
     li {
       width: 140px;
       font-size: 0.875rem;
     }
   }
-  @media (max-width: 399px) {
-    padding: 2em 0.15em;
+  @media (max-width: 419px) {
+    padding: 2.5em 1.17em;
     .item-container {
       gap: 0.5em;
     }
     li {
-      width: 130px;
-      font-size: 0.75rem;
+      width: 140px;
+      font-size: 0.85rem;
     }
   }
 `;

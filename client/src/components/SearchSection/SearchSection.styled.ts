@@ -54,6 +54,11 @@ const SearchSectionStyled = styled.section`
       width: 15em;
     }
   }
+
+  @media (max-width:750px){
+    padding: 1em 1.25em;
+
+  }
   @media (max-width: 927px) {
     gap:1em;
     justify-content: revert;
