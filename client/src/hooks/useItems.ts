@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getAllItems } from "../api/ItemApi";
+import { getAllItems, getItem } from "../api/ItemApi";
 
 // Custom hook to fetch all items
 const useGetAllItems = () => {
@@ -13,4 +13,17 @@ const useGetAllItems = () => {
   });
 };
 
-export { useGetAllItems };
+// Custom hook get one item
+const useGetItem = (id: string) => {
+  return useQuery(["items", id], () => getItem(id), {
+    onSuccess: () => {
+      console.log("Get item successfully");
+    },
+    onError: () => {
+      console.log("Fail to get item");
+    },
+    enabled: Boolean(id),
+  });
+};
+
+export { useGetAllItems, useGetItem };

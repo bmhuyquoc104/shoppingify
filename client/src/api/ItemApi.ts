@@ -8,4 +8,6 @@ const api = axios.create({
 // Function to get all items from the api
 const getAllItems = () => api.get("/items").then((res) => res.data);
 
-export { getAllItems };
+// Function to get item by id from the api
+const getItem = (id: string) => api.get(`items/${id}`).then((res) => res.data);
+export { getAllItems, getItem };
