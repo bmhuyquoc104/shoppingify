@@ -14,5 +14,12 @@ const getAllItems = async (req: Request, res: Response) => {
     res.status(500).send("Internal server");
   }
 };
-
-export {getAllItems}
+// Function to get Item By Id
+const getItemById = async (req: Request, res: Response) => {
+  try {
+    res.status(200).send(res.item);
+  } catch (error) {
+    res.status(500).send("Internal server");
+  }
+};
+export { getAllItems, getItemById };

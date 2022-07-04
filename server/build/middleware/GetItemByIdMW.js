@@ -9,31 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getItemById = exports.getAllItems = void 0;
+exports.getItemByIdMiddleWare = void 0;
 const Items_1 = require("../models/Items");
-// Function to get all items
-const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// Middleware to get item by id
+const getItemByIdMiddleWare = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    // Declare item variable
+    let item;
+    //  Initialize item
+    item = {
+        name: "",
+        category: "",
+        note: "",
+        image: "",
+    };
     try {
-        const items = yield Items_1.ItemModel.find();
-        if (items == null) {
-            res.status(404).send("There are no items available");
-        }
-        else {
-            res.status(200).send(items);
+        console.log(req.params.id);
+        item = yield Items_1.ItemModel.findById(req.params.id);
+        if (item == null) {
+            res.status(404).send("Can not find this item");
         }
     }
     catch (error) {
-        res.status(500).send("Internal server");
+        res.status(500).send({ message: error.message });
     }
+    res.item = item;
+    next();
 });
-exports.getAllItems = getAllItems;
-// Function to get Item By Id
-const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        res.status(200).send(res.item);
-    }
-    catch (error) {
-        res.status(500).send("Internal server");
-    }
-});
-exports.getItemById = getItemById;
+exports.getItemByIdMiddleWare = getItemByIdMiddleWare;
