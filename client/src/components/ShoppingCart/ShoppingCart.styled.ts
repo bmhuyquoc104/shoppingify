@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const ShoppingCartStyled = styled.section`
+  position: fixed;
+  right: 0;
+  width:24em;
   display: flex;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.header.backgroundColor};
@@ -109,6 +112,9 @@ const ShoppingCartStyled = styled.section`
     }
   }
   @media (max-width: 750px) {
+    position:revert;
+    width: 100%;
+    right:revert;
     .shopping-list {
       padding: 2em 1em 2em 1.5em;
 

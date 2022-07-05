@@ -32,22 +32,24 @@ function ItemDetail() {
         <MdKeyboardBackspace />
         Back
       </button>
-      <div className="item-image">
-        <img src={item?.image} alt="item" />
-      </div>
-      <div className="item-detail">
-        <h3>
-          name
-          <p className="name">{item?.name}</p>
-        </h3>
-        <h3>
-          category
-          <p>{item?.category}</p>
-        </h3>
-        <h3>
-          note
-          <p>{item?.note}</p>
-        </h3>
+      <div className="main-content">
+        <div className="item-image">
+          <img src={item?.image} alt="item" />
+        </div>
+        <div className="item-detail">
+          <h3>
+            name
+            <p className="name">{item?.name}</p>
+          </h3>
+          <h3>
+            category
+            <p>{item?.category}</p>
+          </h3>
+          <h3>
+            note
+            <p>{item?.note}</p>
+          </h3>
+        </div>
       </div>
       <div className="controller">
         <button className="delete">delete</button>

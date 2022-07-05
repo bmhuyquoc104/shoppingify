@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { imageResources } from "../../assets/imageResources";
 import ShoppingCartStyled from "./ShoppingCart.styled";
 
 function ShoppingCart() {
+  const navigate = useNavigate();
   return (
     <ShoppingCartStyled>
       <div className="shopping-list">
@@ -10,7 +12,7 @@ function ShoppingCart() {
           <img src={imageResources.Bottle} alt="bottle" />
           <div className="banner-content">
             <p>Didn't find what you need?</p>
-            <button>Add Item</button>
+            <button onClick = {() => navigate("add")}>Add Item</button>
           </div>
         </div>
         <div className="shopping-list-content">No items</div>

@@ -23,6 +23,7 @@ const PageContainerStyled = styled.div`
   @media (max-width: 1137px) {
     grid-template-columns: minmax(500px, 1fr) 24em;
   }
+  
   @media (max-width: 909px) {
     grid-template-columns: minmax(350px, 1fr) 24em;
   }

@@ -7,7 +7,9 @@ const ItemDetailStyled = styled.section`
   flex-direction: column;
   gap: 2em;
   padding: 2em 2.5em;
-
+  position: fixed;
+  right: 0;
+  width: 24em;
   .back {
     display: flex;
     align-items: center;
@@ -24,6 +26,13 @@ const ItemDetailStyled = styled.section`
       font-weight: 700;
     }
   }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+
   .item-image {
     width: 100%;
     height: 220px;
@@ -43,7 +52,7 @@ const ItemDetailStyled = styled.section`
       font-weight: 500;
       display: flex;
       flex-direction: column;
-      gap:1.5em;
+      gap: 1.5em;
     }
     gap: 1.75em;
     p {
@@ -79,6 +88,15 @@ const ItemDetailStyled = styled.section`
       padding: 1.5em;
       border: none;
       border-radius: 12px;
+    }
+  }
+  @media (max-width: 750px) {
+    width: 100%;
+    position: revert;
+    min-height: auto;
+    right: revert;
+    .main-content{
+      height: auto;
     }
   }
 `;

@@ -45,6 +45,8 @@ const ItemListStyled = styled.section`
     padding: 1em 0.25em;
   }
   @media (max-width: 910px) and (min-width: 750px) {
+    margin-top: 3em;
+
     li {
       width: 10em;
     }
@@ -54,7 +56,10 @@ const ItemListStyled = styled.section`
         padding: 2em 1.25em;
 
   }
-
+ 
+  @media (max-width:560px){
+    margin-top:3.4em;
+  }
   @media (max-width: 530px) and (min-width: 400px) {
     li {
       width: 140px;
