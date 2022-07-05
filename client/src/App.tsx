@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import History from "./pages/History";
 import Statistics from "./pages/Statistics";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ItemDetail from "./components/ItemDetail/ItemDetail";
 function App() {
   const [theme, themeToggler] = useTheme();
@@ -17,10 +18,13 @@ function App() {
       <GlobalStyled />
       <Header themeToggler={themeToggler} theme={theme} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/statistics" element={<Statistics />} />
-        <Route path="/item/:id" element={<ItemDetail />} />
+        <Route path="/" element={<Home />}>
+          <Route path=":id" element = {<ItemDetail/>} />
+          <Route path="" element={<ShoppingCart />} />
+        </Route>
+        <Route path="history" element={<History />} />
+        <Route path="statistics" element={<Statistics />} />
+        {/* <Route path="item/:id" element={<ItemDetail />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </ThemeProvider>

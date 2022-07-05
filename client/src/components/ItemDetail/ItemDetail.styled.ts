@@ -1,1 +1,86 @@
-import styled from "styled-components"
+import styled from "styled-components";
+
+const ItemDetailStyled = styled.section`
+  display: flex;
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.header.backgroundColor};
+  flex-direction: column;
+  gap: 2em;
+  padding: 2em 2.5em;
+
+  .back {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    background-color: transparent;
+    border: transparent;
+    color: #f9a109;
+    :hover {
+      cursor: pointer;
+    }
+    & > * {
+      color: #f9a109;
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+  }
+  .item-image {
+    width: 100%;
+    height: 220px;
+    img {
+      width: 100%;
+      object-fit: contain;
+      height: 100%;
+      border-radius: 25px;
+    }
+  }
+  .item-detail {
+    display: flex;
+    flex-direction: column;
+    h3 {
+      color: ${({ theme }) => theme.placeholder.color};
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      gap:1.5em;
+    }
+    gap: 1.75em;
+    p {
+      color: ${({ theme }) => theme.text.color};
+      font-weight: 500;
+      line-height: 22px;
+      font-size: 1.125rem;
+    }
+    .name {
+      font-size: 1.5rem;
+    }
+  }
+  .controller {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    align-items: center;
+    button:hover {
+      cursor: pointer;
+    }
+    .delete {
+      font-weight: 700;
+      font-size: 1rem;
+      color: ${({ theme }) => theme.heading1.color};
+      background-color: transparent;
+      border: transparent;
+    }
+    .add {
+      font-weight: 700;
+      font-size: 1rem;
+      background-color: ${({ theme }) => theme.button.backgroundColor};
+      color: ${({ theme }) => theme.header.backgroundColor};
+      padding: 1.5em;
+      border: none;
+      border-radius: 12px;
+    }
+  }
+`;
+
+export default ItemDetailStyled;

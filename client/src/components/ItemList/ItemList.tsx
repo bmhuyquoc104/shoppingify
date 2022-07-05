@@ -45,7 +45,7 @@ function ItemList() {
               .map((item: Item) => (
                 <li key={item._id}>
                   <>
-                    <p onClick={() => navigate(`item/${item._id}`)}>
+                    <p onClick={() => navigate(`${item._id}`)}>
                       {item.name}
                     </p>
                     <AiOutlinePlus />
