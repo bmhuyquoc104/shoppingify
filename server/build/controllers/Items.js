@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getItemById = exports.getAllItems = void 0;
+exports.addItem = exports.getItemById = exports.getAllItems = void 0;
 const Items_1 = require("../models/Items");
 // Function to get all items
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -37,3 +37,26 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getItemById = getItemById;
+// Function to add Item
+const addItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.body);
+        const item = new Items_1.ItemModel({
+            name: req.body.name,
+            image: req.body.image,
+            note: req.body.note,
+            category: req.body.category,
+        });
+        if (item != null) {
+            yield item.save();
+            res.status(200).send(item);
+        }
+        else {
+            res.status(404).send("Nothing found");
+        }
+    }
+    catch (error) {
+        res.status(500).send("Internal server");
+    }
+});
+exports.addItem = addItem;
