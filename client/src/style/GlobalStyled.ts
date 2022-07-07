@@ -22,6 +22,7 @@ box-sizing:border-box;
   --clr_shopping_list_category_light:#828282;
   --clr_complete_button_bg_light:#56ccf2
   --clr_shopping_list_footer_bg_light:rgba(0,0,0,0.1);
+  --clr_shopping_list_options_bg_light:#F2F2F2;
 
   /* Dark theme */
   --clr_header_bg_dark:#000000;
@@ -37,6 +38,8 @@ box-sizing:border-box;
   --clr_shopping_list_category_dark:#7d7d7d;
   --clr_complete_button_bg_dark:#56ccf2
   --clr_shopping_list_footer_bg_dark:rgba(255,255,255,0.1);
+  --clr_shopping_list_options_bg_dark:#7d7d7d;
+
 }
 
 #root{
@@ -44,7 +47,7 @@ box-sizing:border-box;
   flex-direction:row;
   min-height:100vh;
   width:100%;
-  background-color:${({theme}) => theme.body.backgroundColor};
+  background-color:${({ theme }) => theme.body.backgroundColor};
   font-family: 'Quicksand', sans-serif;
   }
 `;

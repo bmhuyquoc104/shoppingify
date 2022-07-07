@@ -18,6 +18,8 @@ const FormStyled = styled.form`
     }
   }
   .form-content {
+    height: 70vh;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -26,26 +28,17 @@ const FormStyled = styled.form`
       flex-direction: column;
       gap: 0.7em;
     }
-    label {
+    label,
+    h3 {
       font-size: 0.875rem;
       font-weight: 500;
       color: ${({ theme }) => theme.heading1.color};
+      cursor: pointer;
     }
-
-    select {
-      background-image: url(${imageResources.CloseIcon});
-      background-repeat: no-repeat;
-      -moz-appearance: none; /* Firefox */
-      -webkit-appearance: none; /* Safari and Chrome */
-      appearance: none;
-      background-position-x: 90%;
-      background-position-y: 50%;
-      :focus {
-        border: 2px solid ${({ theme }) => theme.button.backgroundColor};
-      }
+    h3 {
+      margin-bottom: -0.5em;
     }
-    input,
-    select {
+    input {
       padding: 1.75em 1em;
       font-size: 0.875rem;
       width: 100%;
@@ -54,6 +47,7 @@ const FormStyled = styled.form`
       outline: none;
       border: 2px solid ${({ theme }) => theme.placeholder.color};
       border-radius: 12px;
+      background-color: ${({ theme }) => theme.body.backgroundColor};
       ::placeholder {
         color: ${({ theme }) => theme.placeholder.color};
       }
@@ -64,9 +58,62 @@ const FormStyled = styled.form`
     .note input {
       padding: 1.75em 1em 4.75em 1em;
     }
-    select .default {
+    .category {
+      font-size: 0.875rem;
+      display: flex;
+      padding: 1.75em 1em;
+      flex-direction: row;
+      font-weight: 500;
       color: ${({ theme }) => theme.placeholder.color};
+      outline: none;
+      border: 2px solid ${({ theme }) => theme.placeholder.color};
+      border-radius: 12px;
+      justify-content: space-between;
+      position: relative;
+      align-items: center;
+      p {
+        cursor: pointer;
+      }
+      & > :nth-child(2) {
+        font-size: 1.2rem;
+      }
+      .options {
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        padding: 1.75em 1em;
+        background-color: ${({ theme }) => theme.header.backgroundColor};
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+        ul {
+          display: flex;
+          flex-direction: column;
+        }
+        li {
+          list-style-type: none;
+          color: ${({ theme }) => theme.shoppingList.category.color};
+          font-size: 1.125rem;
+          padding: 0.35em 0.5em;
+
+          font-weight: 500;
+          :hover {
+            background-color: ${({ theme }) =>
+              theme.shoppingList.list.backgroundColor};
+            border-radius: 12px;
+            color: ${({ theme }) => theme.heading1.color};
+          }
+        }
+      }
     }
+  }
+  .input-category {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    font-size:1rem !important;
+    padding: 0.35em 0.5em !important;
   }
   .controller {
     display: flex;
