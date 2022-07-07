@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { Item } from "../models/Item";
 // Declare base url
 const api = axios.create({
   baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
@@ -10,4 +10,8 @@ const getAllItems = () => api.get("/items").then((res) => res.data);
 
 // Function to get item by id from the api
 const getItem = (id: string) => api.get(`items/${id}`).then((res) => res.data);
-export { getAllItems, getItem };
+
+// Function to add item
+const addItem = (item: Item) =>
+  api.post("/items", item).then((res) => res.data);
+export { getAllItems, getItem, addItem };

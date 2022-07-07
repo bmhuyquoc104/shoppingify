@@ -1,5 +1,5 @@
-import { useQuery } from "react-query";
-import { getAllItems, getItem } from "../api/ItemApi";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { getAllItems, getItem, addItem } from "../api/ItemApi";
 
 // Custom hook to fetch all items
 const useGetAllItems = () => {
@@ -26,4 +26,17 @@ const useGetItem = (id: string) => {
   });
 };
 
-export { useGetAllItems, useGetItem };
+// Custom hook to add item
+const useAddItem = () => {
+  const queryClient = useQueryClient();
+  return useMutation(addItem, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["items"]);
+    },
+    onError: (error: Error) => {
+      console.log(error);
+    },
+  });
+};
+
+export { useGetAllItems, useGetItem, useAddItem };

@@ -1,8 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import FormStyled from "./Form.styled";
+import { useAddItem } from "../../hooks/useItems";
 
 function Form() {
+  // Declare navigate for routing
   const navigate = useNavigate();
+  // Declare property for useAddItem hook
+  const { mutate } = useAddItem();
+
+  // Declare function when submit the form
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const testItem = {
+      name: "le anh sir",
+      image: "cho sir",
+      category: "Fruit and vegetables",
+      note: "cho sir rach",
+    };
+    mutate(testItem);
+  };
   return (
     <FormStyled>
       <div className="title">
@@ -39,7 +55,9 @@ function Form() {
         <button onClick={() => navigate("/")} className="cancel">
           cancel
         </button>
-        <button className="save">Save</button>
+        <button onClick={handleSubmit} className="save">
+          Save
+        </button>
       </div>
     </FormStyled>
   );
