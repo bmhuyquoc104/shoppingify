@@ -15,24 +15,33 @@ function Form() {
   const { mutate } = useAddItem();
 
   // Declare function when submit the form
-  const onSubmit = (data: any,e:any) => {
-    e.preventDefault();
-    console.log(data);
-    console.log("cho sir")
+  const onSubmit = (data: any, e: any) => {
+    data = { ...data, category: categoryChosen };
+    mutate(data);
+    reset();
   };
+
+  //Declare type for form
+  type FormValue = {
+    name: string;
+    note: string;
+    image: string;
+    category: string;
+  };
+
   // Declare a schema
   const schema = yup
     .object()
     .shape({
       name: yup.string().required("Please do not leave this field blank"),
-      category: yup.string().required("Please do not leave this field blank"),
       image: yup.string().required("Please do not leave this field blank"),
+      category:yup.string().required("Please do not leave this field blank"),
       note: yup.string(),
     })
     .required();
 
   // Declare default value for the form
-  const defaultValue: Item = {
+  const defaultFormValue: Item = {
     name: "",
     image: "",
     note: "",
@@ -43,11 +52,11 @@ function Form() {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields, isValid, isDirty },
     reset,
-  } = useForm({
-    defaultValues: defaultValue,
-    shouldFocusError: true,
+    formState: { errors },
+  } = useForm<FormValue>({
+    defaultValues: defaultFormValue,
+    mode: "onSubmit",
     resolver: yupResolver(schema),
   });
 
@@ -69,22 +78,50 @@ function Form() {
       <div className="form-content">
         <div className="name">
           <label htmlFor="name">Name</label>
-          <input type="text" placeholder="Enter a name" {...register("name")} />
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter a name"
+            {...register("name")}
+          />
+          {errors?.name && <p className="error">{errors.name.message}</p>}
         </div>
         <div className="note">
           <label htmlFor="note">Note (optional)</label>
-          <input type="text" placeholder="Enter a note" {...register("note")} />
+          <input
+            id="note"
+            type="text"
+            placeholder="Enter a note"
+            {...register("note")}
+          />
         </div>
         <div className="image">
-          <label htmlFor="image">Image</label>
-          <input type="text" {...register("image")} placeholder="Enter a url" />
+          <label className="control-label" htmlFor="image">
+            Image
+          </label>
+          <input
+            id="image"
+            type="text"
+            {...register("image")}
+            placeholder="Enter a url"
+          />
+          {errors?.image && <p className = "error">{errors.image.message}</p>}
         </div>
-        <h3 onClick={() => setIsToggleCategory(true)}>Category</h3>
         <div className="category">
-          <p onClick={() => setIsToggleCategory(true)}> {categoryChosen}</p>
-          {isToggleCategory && (
-            <IoMdClose onClick={() => setIsToggleCategory(false)} />
-          )}
+          <label htmlFor="category">Category</label>
+          <div>
+            <input
+              id="category"
+              value={categoryChosen}
+              onClick={() => setIsToggleCategory(true)}
+              placeholder="Choose a category"
+              {...register("category")}
+            />
+            {isToggleCategory && (
+              <IoMdClose className = "icon-close" onClick={() => setIsToggleCategory(false)} />
+            )}
+          </div>
+
           {isToggleCategory && (
             <div className="options">
               <ul>
@@ -124,6 +161,8 @@ function Form() {
               </ul>
             </div>
           )}
+
+          {errors?.category && <p className="error">{errors.category.message}</p>}
         </div>
       </div>
 
@@ -131,8 +170,8 @@ function Form() {
         <button onClick={() => navigate("/")} className="cancel">
           cancel
         </button>
-        <button type="submit" className="save">
-          Save
+        <button className="save" type="submit">
+          Save & Send
         </button>
       </div>
     </FormStyled>

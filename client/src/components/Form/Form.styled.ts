@@ -38,12 +38,19 @@ const FormStyled = styled.form`
     h3 {
       margin-bottom: -0.5em;
     }
+    & > * {
+      &:focus-within {
+        label {
+          color: ${({ theme }) => theme.button.backgroundColor};
+        }
+      }
+    }
     input {
       padding: 1.75em 1em;
       font-size: 0.875rem;
       width: 100%;
       font-weight: 500;
-      color: ${({ theme }) => theme.heading1.color};
+      color: ${({ theme }) => theme.placeholder.color};
       outline: none;
       border: 2px solid ${({ theme }) => theme.placeholder.color};
       border-radius: 12px;
@@ -55,31 +62,33 @@ const FormStyled = styled.form`
         border: 2px solid ${({ theme }) => theme.button.backgroundColor};
       }
     }
+
     .note input {
       padding: 1.75em 1em 4.75em 1em;
     }
     .category {
-      font-size: 0.875rem;
       display: flex;
-      padding: 1.75em 1em;
-      flex-direction: row;
+      width: 100%;
+      flex-direction: column;
       font-weight: 500;
-      color: ${({ theme }) => theme.placeholder.color};
-      outline: none;
-      border: 2px solid ${({ theme }) => theme.placeholder.color};
-      border-radius: 12px;
-      justify-content: space-between;
+      gap: 1rem;
       position: relative;
-      align-items: center;
+      input {
+        position: relative;
+      }
       p {
         cursor: pointer;
       }
-      & > :nth-child(2) {
-        font-size: 1.2rem;
+      .icon-close {
+        font-size: 1.4rem;
+        position: absolute;
+        right:1em;
+        bottom:1em;
       }
+
       .options {
         position: absolute;
-        top: 10vh;
+        top: 14vh;
         left: 0;
         width: 100%;
         padding: 1.75em 1em;
@@ -95,7 +104,7 @@ const FormStyled = styled.form`
           list-style-type: none;
           color: ${({ theme }) => theme.shoppingList.category.color};
           font-size: 1.125rem;
-          padding: 0.35em 0.5em;
+          padding: 0.35em 1em;
 
           font-weight: 500;
           :hover {
@@ -112,8 +121,8 @@ const FormStyled = styled.form`
     border: none !important;
     border-radius: 0 !important;
     background-color: transparent !important;
-    font-size:1rem !important;
-    padding: 0.35em 0.5em !important;
+    font-size: 1rem !important;
+    padding: 0.35em 1em !important;
   }
   .controller {
     display: flex;
@@ -139,6 +148,12 @@ const FormStyled = styled.form`
       border: none;
       border-radius: 12px;
     }
+  }
+  .error{
+    color:#EB5757;
+    font-weight: 700;
+    font-style:italic;
+    font-size: 0.675rem;
   }
   @media (max-width: 750px) {
     right: revert;
