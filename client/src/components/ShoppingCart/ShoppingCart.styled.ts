@@ -61,6 +61,8 @@ const ShoppingCartStyled = styled.section`
       }
     }
     .shopping-list-content {
+      height:60vh;
+      overflow-y:scroll;
       align-self: center;
       font-size: 1.25rem;
       font-weight: 700;
