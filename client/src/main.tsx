@@ -1,17 +1,27 @@
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import ItemChoiceReducer from "./features/ItemSelected";
 import App from "./App";
 
 const client = new QueryClient();
+const store = configureStore({
+  reducer: {
+    itemChoice: ItemChoiceReducer,
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={client}>
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </React.StrictMode>
