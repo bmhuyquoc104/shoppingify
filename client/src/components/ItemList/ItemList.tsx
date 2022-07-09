@@ -38,13 +38,6 @@ function ItemList() {
     <h1>{`Error:${error}`}</h1>;
   }
 
-  const testItem: Item = {
-    name: "huy",
-    category: "Beverages",
-    note: "blblabla",
-    image: "sdfas",
-  };
-
   return (
     <ItemListStyled>
       {categories?.map((category: String, index: number) => (
