@@ -7,10 +7,10 @@ function Cancel() {
   const { setIsToggleCancel } = useContext(ToggleContext);
   return (
     <CancelStyled>
-      <MdClose onClick={setIsToggleCancel} className="close" />
+      <MdClose onClick={() => setIsToggleCancel(false)} className="close" />
       <p>Are you sure that you want to cancel this list?</p>
       <div className="controller">
-        <button onClick={setIsToggleCancel} className="cancel">
+        <button onClick={() => setIsToggleCancel(false)} className="cancel">
           cancel
         </button>
         <button className="yes">Yes</button>

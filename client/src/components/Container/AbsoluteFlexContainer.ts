@@ -6,7 +6,7 @@ const AbsoluteFlexContainerStyled = styled.div`
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   left: 0;

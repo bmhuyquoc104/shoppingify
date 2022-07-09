@@ -11,6 +11,7 @@ const CancelStyled = styled.div`
     align-self: flex-end;
     font-size: 1.2rem;
     color: ${({ theme }) => theme.placeholder.color};
+    cursor: pointer;
   }
   p {
     width: 26ch;
@@ -29,6 +30,7 @@ const CancelStyled = styled.div`
       background-color: transparent;
       color: ${({ theme }) => theme.heading1.color};
       border: none;
+      cursor: pointer;
     }
     .yes {
       font-weight: 700;
@@ -38,6 +40,15 @@ const CancelStyled = styled.div`
       padding: 1.25em;
       border: none;
       border-radius: 12px;
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 750px) {
+    padding: 1em 1.25em 2em 1.75em;
+    gap: 0.75em;
+    p {
+      width: 24ch;
+      font-size: 1.25rem;
     }
   }
 `;
