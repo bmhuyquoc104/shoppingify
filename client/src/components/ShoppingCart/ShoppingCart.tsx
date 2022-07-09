@@ -2,9 +2,10 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { imageResources } from "../../assets/imageResources";
-import { ToggleEditContext } from "../../hooks/useToggleContext";
+import { ToggleContext } from "../../hooks/useToggleContext";
 import ShoppingCartStyled from "./ShoppingCart.styled";
 import ShoppingList from "../ShoppingList/ShoppingList";
+
 
 function ShoppingCart() {
   // Declare navigate for routing between pages
@@ -12,8 +13,8 @@ function ShoppingCart() {
   // Declare use selector to use the item choice arr in the store
   const itemArr = useSelector((state: any) => state.itemSelected);
   // Declare state to track edit button status
-  const { isToggleEdit } = useContext(ToggleEditContext);
-  console.log(isToggleEdit);
+  const { isToggleEdit, setIsToggleCancel } = useContext(ToggleContext);
+
   return (
     <ShoppingCartStyled>
       <div className="shopping-list">
@@ -41,7 +42,9 @@ function ShoppingCart() {
       </div>
       {isToggleEdit ? (
         <div className="shopping-controller complete">
-          <button className="cancel">cancel</button>
+          <button onClick={() => setIsToggleCancel(true)} className="cancel">
+            cancel
+          </button>
           <button className="complete">Complete</button>
         </div>
       ) : (

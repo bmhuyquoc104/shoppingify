@@ -7,7 +7,8 @@ import ShoppingListStyled from "./ShoppingList.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteItemChoice } from "../../features/ItemSelected";
 import { Item } from "../../models/Item";
-import { ToggleEditContext } from "../../hooks/useToggleContext";
+import { ToggleContext } from "../../hooks/useToggleContext";
+
 
 function ShoppingList() {
   // Declare use selector and use dispatch to use the value and action in the item reducer
@@ -30,7 +31,6 @@ function ShoppingList() {
     }
   };
 
-
   // Declare use effect
   useEffect(() => {
     const arrOfProperty = [
@@ -39,7 +39,7 @@ function ShoppingList() {
     setCategories(arrOfProperty);
   }, [itemChoice]);
 
-  const { isToggleEdit, setIsToggleEdit } = useContext(ToggleEditContext);
+  const { isToggleEdit, setIsToggleEdit } = useContext(ToggleContext);
 
   return (
     <ShoppingListStyled>
@@ -71,7 +71,11 @@ function ShoppingList() {
                       >
                         <BsCheck2 />
                       </div>
-                      <div className={`item-name ${isCheckedItems.includes(item.name) && "checked"}`}>
+                      <div
+                        className={`item-name ${
+                          isCheckedItems.includes(item.name) && "checked"
+                        }`}
+                      >
                         {item?.name}
                       </div>
                     </div>

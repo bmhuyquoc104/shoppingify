@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const ToggleEditContext: any = createContext({});
+export const ToggleContext: any = createContext({});
