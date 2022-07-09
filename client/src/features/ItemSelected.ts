@@ -49,7 +49,7 @@ const itemSelectedSlice = createSlice({
     },
     // Delete the item choice from the arr
     deleteItemChoice: (state: any, action) => {
-      return state.filter((element: Item) => element._id !== action.payload);
+      return state.filter((element: Item) => element.name !== action.payload);
     },
   },
 });

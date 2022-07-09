@@ -10,7 +10,6 @@ import { Item } from "../../models/Item";
 function ShoppingList() {
   // Declare use selector and use dispatch to use the value and action in the item reducer
   const itemChoice = useSelector((state: any) => state.itemSelected);
-
   console.log(itemChoice);
   const dispatch = useDispatch();
 
@@ -44,7 +43,10 @@ function ShoppingList() {
                     {isToggleItemQuantity ? (
                       <div className="item-controller active">
                         {" "}
-                        <div className="trash-container">
+                        <div
+                          onClick={() => dispatch(deleteItemChoice(item.name))}
+                          className="trash-container"
+                        >
                           <FiTrash className="trash" />
                         </div>
                         <button>-</button>

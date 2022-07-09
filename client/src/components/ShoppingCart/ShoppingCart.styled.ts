@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ShoppingCartStyled = styled.section`
   position: fixed;
   right: 0;
-  width:24em;
+  width: 24em;
   display: flex;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.header.backgroundColor};
@@ -61,12 +61,17 @@ const ShoppingCartStyled = styled.section`
       }
     }
     .shopping-list-content {
-      height:60vh;
-      overflow-y:scroll;
+      overflow-y: scroll;
       align-self: center;
       font-size: 1.25rem;
       font-weight: 700;
       color: ${({ theme }) => theme.heading1.color};
+      .active {
+      }
+    }
+    .shopping-list-content.active {
+      align-self: revert;
+      height: 60vh;
     }
     .cart-logo {
       align-self: center;
@@ -83,6 +88,12 @@ const ShoppingCartStyled = styled.section`
   }
 
   .shopping-controller {
+    :focus-within {
+      border: 1px solid ${({ theme }) => theme.button.backgroundColor};
+      button{
+        background-color: ${({ theme }) => theme.button.backgroundColor}
+      }
+    }
     margin: auto;
     border: 1px solid ${({ theme }) => theme.placeholder.color};
     background-color: ${({ theme }) => theme.header.backgroundColor};
@@ -114,9 +125,9 @@ const ShoppingCartStyled = styled.section`
     }
   }
   @media (max-width: 750px) {
-    position:revert;
+    position: revert;
     width: 100%;
-    right:revert;
+    right: revert;
     .shopping-list {
       padding: 2em 1em 2em 1.5em;
 
@@ -132,12 +143,12 @@ const ShoppingCartStyled = styled.section`
         }
       }
     }
-    .shopping-controller{
-      margin-top:1.5em;
-      margin-bottom:1.5em;
-      input{
-        padding:0.45em 2em;
-        padding-left:1em;
+    .shopping-controller {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      input {
+        padding: 0.45em 2em;
+        padding-left: 1em;
       }
     }
   }
@@ -145,7 +156,7 @@ const ShoppingCartStyled = styled.section`
     .shopping-list {
       .cart-banner {
         .banner-content {
-          margin-right:3em;
+          margin-right: 3em;
 
           p {
             width: 14ch;
@@ -162,7 +173,7 @@ const ShoppingCartStyled = styled.section`
       height: 100vh;
       .cart-banner {
         .banner-content {
-          margin-right:2em;
+          margin-right: 2em;
 
           p {
             width: 14ch;

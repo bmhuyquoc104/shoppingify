@@ -24,7 +24,7 @@ function ShoppingCart() {
         {itemArr.length === 0 ? (
           <div className="shopping-list-content">No items</div>
         ) : (
-          <div className="shopping-list-content">
+          <div className="shopping-list-content active">
             {" "}
             <ShoppingList />
           </div>
