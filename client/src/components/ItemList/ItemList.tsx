@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { useGetAllItems } from "../../hooks/useItems";
 import { Item } from "../../models/Item";
+import { addUniqueItem } from "../../features/ItemSelected";
 import ItemListStyled from "./ItemList.styled";
 
 function ItemList() {
+  // Declare useDispatch to use function in the redux store
+  const dispatch = useDispatch();
   // Declare navigate for routing
   const navigate = useNavigate();
   // Get properties from the custom hook
@@ -34,6 +38,13 @@ function ItemList() {
     <h1>{`Error:${error}`}</h1>;
   }
 
+  const testItem: Item = {
+    name: "huy",
+    category: "Beverages",
+    note: "blblabla",
+    image: "sdfas",
+  };
+
   return (
     <ItemListStyled>
       {categories?.map((category: String, index: number) => (
@@ -45,10 +56,19 @@ function ItemList() {
               .map((item: Item) => (
                 <li key={item._id}>
                   <>
-                    <p onClick={() => navigate(`${item._id}`)}>
-                      {item.name}
-                    </p>
-                    <AiOutlinePlus />
+                    <p onClick={() => navigate(`${item._id}`)}>{item.name}</p>
+                    <AiOutlinePlus
+                      onClick={() =>
+                        dispatch(
+                          addUniqueItem({
+                            name: item.name,
+                            note: item.note,
+                            category: item.category,
+                            image: item.image,
+                          })
+                        )
+                      }
+                    />
                   </>
                 </li>
               ))}

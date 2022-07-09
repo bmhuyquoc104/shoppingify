@@ -5,13 +5,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ItemChoiceReducer from "./features/ItemSelected";
+import itemChoiceReducer from "./features/ItemSelected";
 import App from "./App";
 
 const client = new QueryClient();
 const store = configureStore({
   reducer: {
-    itemChoice: ItemChoiceReducer,
+    itemSelected: itemChoiceReducer,
   },
 });
 
