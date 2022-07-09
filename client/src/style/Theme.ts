@@ -77,7 +77,7 @@ const darkTheme = {
       color: "var(--clr_shopping_list_category_dark)",
     },
     completeButton: {
-      backgroundColor: "var(--clr_complete_button_bg_dark)",
+      backgroundColor: "var(--clr_complete_button_bg_light)",
     },
     footer: {
       boxShadow: "var(--clr_shopping_list_footer_bg_dark)",

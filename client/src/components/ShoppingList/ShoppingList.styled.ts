@@ -14,6 +14,7 @@ const ShoppingListStyled = styled.div`
       color: ${({ theme }) => theme.heading1.color};
     }
     & > *:nth-child(2) {
+      cursor: pointer;
       font-size: 1.25rem;
       color: ${({ theme }) => theme.heading1.color};
     }
@@ -32,10 +33,44 @@ const ShoppingListStyled = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      .edit-name {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.75em;
+        .square {
+          width: 24px;
+          height: 24px;
+          background-color: transparent;
+          border: 2px solid ${({ theme }) => theme.button.backgroundColor};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & > * {
+            display: none;
+          }
+        }
+        .square-checked {
+          width: 24px;
+          height: 24px;
+          background-color: transparent;
+          border: 2px solid ${({ theme }) => theme.button.backgroundColor};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & > * {
+            display: flex;
+            color: ${({ theme }) => theme.button.backgroundColor};
+          }
+        }
+      }
       .item-name {
         font-size: 1rem;
         color: ${({ theme }) => theme.text.color};
         font-weight: 500;
+      }
+      .item-name.checked{
+        text-decoration:line-through;
       }
       .item-controller {
         .item-quantity {

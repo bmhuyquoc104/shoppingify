@@ -90,8 +90,8 @@ const ShoppingCartStyled = styled.section`
   .shopping-controller {
     :focus-within {
       border: 1px solid ${({ theme }) => theme.button.backgroundColor};
-      button{
-        background-color: ${({ theme }) => theme.button.backgroundColor}
+      button {
+        background-color: ${({ theme }) => theme.button.backgroundColor};
       }
     }
     margin: auto;
@@ -122,6 +122,32 @@ const ShoppingCartStyled = styled.section`
       border-radius: 12px;
       background-color: ${({ theme }) => theme.placeholder.color};
       color: ${({ theme }) => theme.header.backgroundColor};
+    }
+  }
+  .shopping-controller.complete {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    border:none;
+    button:hover {
+      cursor: pointer;
+    }
+    .cancel {
+      font-weight: 700;
+      font-size: 1rem;
+      color: ${({ theme }) => theme.heading1.color};
+      background-color: transparent;
+      border: transparent;
+    }
+    .complete {
+      font-weight: 700;
+      font-size: 1rem;
+      background-color: #56ccf2;
+      color: ${({ theme }) => theme.header.backgroundColor};
+      padding: 1.5em;
+      border: none;
+      border-radius: 12px;
     }
   }
   @media (max-width: 750px) {
