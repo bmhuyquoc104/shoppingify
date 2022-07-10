@@ -43,25 +43,35 @@ function ShoppingHistory() {
 
   return (
     <ShoppingHistoryStyled>
+      <h2>Shopping history</h2>
       {daysByMonthYear?.map((day: String, index: number) => (
         <div className="container" key={index}>
           <h2>{day}</h2>
-          <div className="shopping-detail-container">
+          <div className="shopping-details-container">
             {shoppingDetails
               ?.filter(
                 (shoppingDetail: any) => shoppingDetail.daysByMonthYear === day
               )
               .map((shoppingDetail: any) => (
-                <div key={shoppingDetail._id}>
-                  <>
-                    <h3>{shoppingDetail.name}</h3>
-                    <div className="date">
-                      <RiCalendarTodoFill />
-                      <h3>{formatDate2(shoppingDetail?.createdAt)}</h3>
-                    </div>
-                    <h3>{shoppingDetail.status}</h3>
-                    <MdOutlineKeyboardArrowRight />
-                  </>
+                <div
+                  className="shopping-detail-container"
+                  key={shoppingDetail._id}
+                >
+                  <h3 className="name">{shoppingDetail.shoppingDetailName}</h3>
+                  <div className="calendar">
+                    <RiCalendarTodoFill />
+                    <h3>{formatDate2(shoppingDetail?.createdAt)}</h3>
+                  </div>
+                  <h3
+                    className={
+                      shoppingDetail?.status === "completed"
+                        ? "status"
+                        : "status cancel"
+                    }
+                  >
+                    {shoppingDetail.status}
+                  </h3>
+                  <MdOutlineKeyboardArrowRight className="arrow" />
                 </div>
               ))}
           </div>

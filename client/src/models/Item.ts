@@ -1,6 +1,6 @@
 // Item type
 export type Item = {
-  name: string;
+  shoppingDetailName: string;
   image: string;
   note?: string;
   category: string;

@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import ShoppingHistory from "../components/ShoppingHistory/ShoppingHistory";
-import PageContainerStyled from "../components/Container/PageContainer";
+import HistoryContainerStyled from "../components/Container/HistoryContainer";
 function History() {
   return (
-    <PageContainerStyled>
+    <HistoryContainerStyled>
       <ShoppingHistory />
-      <Outlet/>
-    </PageContainerStyled>
+      <Outlet />
+    </HistoryContainerStyled>
   );
 }
 
