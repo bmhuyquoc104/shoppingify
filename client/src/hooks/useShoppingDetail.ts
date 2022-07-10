@@ -9,7 +9,6 @@ import {
 const useGetAllShoppingDetails = () => {
   return useQuery(["shopping-details"], getAllShoppingDetails, {
     onSuccess: (data) => {
-      console.log(data);
       console.log("Fetch successfully!");
     },
     onError: (error) => {
@@ -25,7 +24,6 @@ const useGetShoppingDetailById = (id: string) => {
     enabled: Boolean(id),
     onSuccess: (data) => {
       console.log("Fetch successfully!");
-      console.log(data);
     },
     onError: (error) => {
       console.log("Fail to get data");
