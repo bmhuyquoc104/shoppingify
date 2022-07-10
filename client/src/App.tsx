@@ -15,6 +15,7 @@ import Form from "./components/Form/Form";
 import { ToggleContext } from "./hooks/useToggleContext";
 import Cancel from "./components/PopUp/Cancel";
 import { AbsoluteFlexContainerStyled } from "./components/Container/AbsoluteFlexContainer";
+import HistoryDetail from "./pages/HistoryDetail";
 
 function App() {
   const [theme, themeToggler] = useTheme();
@@ -40,10 +41,15 @@ function App() {
             <Route path="add" element={<Form />} />
           </Route>
           <Route path="history" element={<History />}>
-            <Route path=":id" element={<ItemDetail />} />
             <Route path="" element={<ShoppingCart />} />
             <Route path="add" element={<Form />} />
           </Route>
+
+          <Route path="history/history-detail/:id" element={<HistoryDetail />}>
+            <Route path="" element={<ShoppingCart />} />
+            <Route path="add" element={<Form />} />
+          </Route>
+
           <Route path="statistics" element={<Statistics />}>
             <Route path=":id" element={<ItemDetail />} />
             <Route path="" element={<ShoppingCart />} />

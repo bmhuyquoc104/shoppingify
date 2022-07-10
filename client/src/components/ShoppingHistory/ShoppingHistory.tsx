@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { RiCalendarTodoFill } from "react-icons/ri";
 import { useGetAllShoppingDetails } from "../../hooks/useShoppingDetail";
@@ -31,6 +32,8 @@ function ShoppingHistory() {
     setDaysByMonthYear(arr);
   }, [shoppingDetails]);
 
+  // Declare navigate for routing
+  const navigate = useNavigate();
   // Render when the data is loading
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -71,7 +74,10 @@ function ShoppingHistory() {
                   >
                     {shoppingDetail.status}
                   </h3>
-                  <MdOutlineKeyboardArrowRight className="arrow" />
+                  <MdOutlineKeyboardArrowRight
+                    onClick={() => navigate(`history-detail/${shoppingDetail._id}`)}
+                    className="arrow"
+                  />
                 </div>
               ))}
           </div>
