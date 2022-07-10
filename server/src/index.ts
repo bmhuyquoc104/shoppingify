@@ -1,15 +1,16 @@
 import express, { Request, Response, Express } from "express";
 import cors from "cors";
-import 'dotenv/config';
+import "dotenv/config";
 import mongoose, { ConnectOptions } from "mongoose";
 import ItemRouter from "./routes/Items";
+import ShoppingDetailRouter from "./routes/ShoppingDetail";
 
 // Declare app, port , and mongo URI
-const app:Express = express();
+const app: Express = express();
 const PORT: number = process.env.PORT || 8000;
 const MONGO_URI = process.env.MONGO_URI!;
 
-// Connect to mongoDB 
+// Connect to mongoDB
 mongoose.connect(
   MONGO_URI,
   {
@@ -34,7 +35,10 @@ app.get("/", (req: Request, res: Response) => {
 // Config the items route
 app.use("/items", ItemRouter);
 
-// Start the server on port 
+// Config the shopping detail route
+app.use("/shopping-detail", ShoppingDetailRouter);
+
+// Start the server on port
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });

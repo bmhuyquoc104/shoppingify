@@ -8,11 +8,12 @@ const cors_1 = __importDefault(require("cors"));
 require("dotenv/config");
 const mongoose_1 = __importDefault(require("mongoose"));
 const Items_1 = __importDefault(require("./routes/Items"));
+const ShoppingDetail_1 = __importDefault(require("./routes/ShoppingDetail"));
 // Declare app, port , and mongo URI
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 8000;
 const MONGO_URI = process.env.MONGO_URI;
-// Connect to mongoDB 
+// Connect to mongoDB
 mongoose_1.default.connect(MONGO_URI, {
     useNewUrlParser: true,
 }, () => {
@@ -29,7 +30,9 @@ app.get("/", (req, res) => {
 });
 // Config the items route
 app.use("/items", Items_1.default);
-// Start the server on port 
+// Config the shopping detail route
+app.use("/shopping-detail", ShoppingDetail_1.default);
+// Start the server on port
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });

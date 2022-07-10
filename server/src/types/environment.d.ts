@@ -1,5 +1,6 @@
 export {};
 import { ItemType } from "../models/Items";
+import { ShoppingDetailType } from "../models/ShoppingDetail";
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -10,7 +11,8 @@ declare global {
   }
   namespace Express {
     interface Response {
-      item: any ;
+      item: ItemType?;
+      shoppingDetail: ShoppingDetailType?;
     }
   }
 }
