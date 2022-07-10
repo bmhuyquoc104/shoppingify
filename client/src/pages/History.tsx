@@ -1,9 +1,13 @@
-import React from 'react'
-
+import { Outlet } from "react-router-dom";
+import ShoppingHistory from "../components/ShoppingHistory/ShoppingHistory";
+import PageContainerStyled from "../components/Container/PageContainer";
 function History() {
   return (
-    <div>History</div>
-  )
+    <PageContainerStyled>
+      <ShoppingHistory />
+      <Outlet/>
+    </PageContainerStyled>
+  );
 }
 
-export default History
+export default History;

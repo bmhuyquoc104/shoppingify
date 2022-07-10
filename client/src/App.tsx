@@ -39,8 +39,16 @@ function App() {
             <Route path="" element={<ShoppingCart />} />
             <Route path="add" element={<Form />} />
           </Route>
-          <Route path="history" element={<History />} />
-          <Route path="statistics" element={<Statistics />} />
+          <Route path="history" element={<History />}>
+            <Route path=":id" element={<ItemDetail />} />
+            <Route path="" element={<ShoppingCart />} />
+            <Route path="add" element={<Form />} />
+          </Route>
+          <Route path="statistics" element={<Statistics />}>
+            <Route path=":id" element={<ItemDetail />} />
+            <Route path="" element={<ShoppingCart />} />
+            <Route path="add" element={<Form />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         {isToggleCancel && (
