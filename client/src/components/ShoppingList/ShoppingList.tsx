@@ -6,13 +6,21 @@ import { useEffect, useState, useContext } from "react";
 import ShoppingListStyled from "./ShoppingList.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteItemChoice } from "../../features/ItemSelected";
+import {
+  increaseQuantity,
+  decreaseQuantity,
+  addItem,
+} from "../../features/ShoppingDetail";
 import { Item } from "../../models/Item";
 import { ToggleContext } from "../../hooks/useToggleContext";
-
 
 function ShoppingList() {
   // Declare use selector and use dispatch to use the value and action in the item reducer
   const itemChoice = useSelector((state: any) => state.itemSelected);
+  const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
+  console.log(shoppingDetail);
+  // const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
+  // console.log(shoppingDetail);
   const dispatch = useDispatch();
 
   // Declare state to track category status
@@ -39,6 +47,7 @@ function ShoppingList() {
     setCategories(arrOfProperty);
   }, [itemChoice]);
 
+  //Get the properties from the useContext
   const { isToggleEdit, setIsToggleEdit } = useContext(ToggleContext);
 
   return (
@@ -58,9 +67,9 @@ function ShoppingList() {
             {itemChoice
               ?.filter((item: Item) => item.category === category)
               ?.map((item: Item) => (
-                <div className="item-container">
+                <div key={item._id} className="item-container">
                   {isToggleEdit ? (
-                    <div className="edit-name">
+                    <div key={item._id} className="edit-name">
                       <div
                         onClick={() => handleAdd(item.name)}
                         className={

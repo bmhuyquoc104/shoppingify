@@ -1,20 +1,24 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addName } from "../../features/ShoppingDetail";
 import { imageResources } from "../../assets/imageResources";
 import { ToggleContext } from "../../hooks/useToggleContext";
 import ShoppingCartStyled from "./ShoppingCart.styled";
 import ShoppingList from "../ShoppingList/ShoppingList";
-
 
 function ShoppingCart() {
   // Declare navigate for routing between pages
   const navigate = useNavigate();
   // Declare use selector to use the item choice arr in the store
   const itemArr = useSelector((state: any) => state.itemSelected);
-  // Declare state to track edit button status
+  const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
+  const dispatch = useDispatch();
+  // Get property from the use context
   const { isToggleEdit, setIsToggleCancel } = useContext(ToggleContext);
-
+  // Declare state to track edit button status
+  const [isSaved, setIsSaved] = useState(false);
+  const inputRef = useRef<any>();
   return (
     <ShoppingCartStyled>
       <div className="shopping-list">
@@ -49,8 +53,32 @@ function ShoppingCart() {
         </div>
       ) : (
         <div className="shopping-controller">
-          <input type="text" placeholder="Enter a name" />
-          <button>Save</button>
+          {isSaved ? (
+            <>
+              <input
+                readOnly
+                value={`Name: ${shoppingDetail.shoppingDetailName}`}
+                ref={inputRef}
+              />
+              <button
+                onClick={() => {
+                  setIsSaved(false);
+                  inputRef.current.value = "";
+                }}
+              >
+                Change
+              </button>
+            </>
+          ) : (
+            <>
+              <input
+                onChange={(e: any) => dispatch(addName(e.target.value))}
+                type="text"
+                placeholder="Enter a name"
+              />
+              <button onClick={() => setIsSaved(true)}>Save</button>
+            </>
+          )}
         </div>
       )}
     </ShoppingCartStyled>
