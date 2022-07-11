@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addUniqueItem } from "../../features/ItemSelected";
 import { MdKeyboardBackspace } from "react-icons/md";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGetItem } from "../../hooks/useItems";
@@ -13,6 +15,9 @@ function ItemDetail() {
 
   //Get property from custom hook
   const { data: item, isError, error, isLoading } = useGetItem(id!);
+
+  // Declare dispatch to use function from reducer
+  const dispatch = useDispatch();
 
   // Render when the data is fetching
   if (isLoading) {
@@ -53,7 +58,22 @@ function ItemDetail() {
       </div>
       <div className="controller">
         <button className="delete">delete</button>
-        <button className="add">Add to list</button>
+        <button
+          onClick={() => {
+            navigate("/");
+            dispatch(
+              addUniqueItem({
+                name: item?.name,
+                category: item?.category,
+                notes: item?.notes,
+                image: item?.image,
+              })
+            );
+          }}
+          className="add"
+        >
+          Add to list
+        </button>
       </div>
     </ItemDetailStyled>
   );

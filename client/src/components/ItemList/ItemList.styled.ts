@@ -33,11 +33,13 @@ const ItemListStyled = styled.section`
     width: max(150px, 11.375em);
     align-items: flex-start;
     font-size: 1rem;
+    cursor: pointer;
     font-weight: 500;
     color: ${({ theme }) => theme.text.color};
     justify-content: space-between;
     svg {
       color: ${({ theme }) => theme.plus.color};
+      cursor: pointer;
     }
   }
 
