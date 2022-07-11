@@ -43,4 +43,16 @@ const addItem = async (req: Request, res: Response) => {
     res.status(500).send("Internal server");
   }
 };
-export { getAllItems, getItemById, addItem };
+
+// Function to delete item
+const deleteItem = async (req: Request, res: Response) => {
+  try {
+    const id = res.item?._id;
+    await ItemModel.deleteOne({ _id: id });
+    res.status(200).send("Successfully deleted");
+  } catch (error) {
+    res.status(500).send("Internal server");
+  }
+};
+
+export { getAllItems, getItemById, addItem, deleteItem };

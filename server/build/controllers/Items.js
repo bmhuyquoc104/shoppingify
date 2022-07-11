@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addItem = exports.getItemById = exports.getAllItems = void 0;
+exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
 const Items_1 = require("../models/Items");
 // Function to get all items
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -60,3 +60,16 @@ const addItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addItem = addItem;
+// Function to delete item
+const deleteItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const id = (_a = res.item) === null || _a === void 0 ? void 0 : _a._id;
+        yield Items_1.ItemModel.deleteOne({ _id: id });
+        res.status(200).send("Successfully deleted");
+    }
+    catch (error) {
+        res.status(500).send("Internal server");
+    }
+});
+exports.deleteItem = deleteItem;

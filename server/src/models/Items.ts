@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 // Declare type for item
 type ItemType = {
+  _id?: string;
   category: string;
   name: string;
   image: string;
@@ -28,5 +29,4 @@ const ItemSchema = new Schema({
 // Declare the model for item
 const ItemModel = mongoose.model("items", ItemSchema);
 
-
-export { ItemModel,ItemType };
+export { ItemModel, ItemType };
