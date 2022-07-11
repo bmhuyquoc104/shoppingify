@@ -26,7 +26,9 @@ function ShoppingList() {
   // Declare state to track category status
   const [categories, setCategories] = useState<Item[] | any>([]);
   // Declare state to track item-quantity status
-  const [isToggleItemQuantity, setIsToggleItemQuantity] = useState(false);
+  const [isToggleItemQuantity, setIsToggleItemQuantity] = useState<string[]>(
+    []
+  );
   // Declare state to track select square in edit mode status
   const [isCheckedItems, setIsCheckedItems] = useState<string[]>([]);
 
@@ -36,6 +38,17 @@ function ShoppingList() {
       setIsCheckedItems([...isCheckedItems, name]);
     } else {
       setIsCheckedItems(isCheckedItems.filter((item) => item !== name));
+    }
+  };
+
+  // Function to check whether this item is toggle item quantity or not
+  const handleToggleItemQuantity = (name: string) => {
+    if (!isToggleItemQuantity.includes(name)) {
+      setIsToggleItemQuantity([...isToggleItemQuantity, name]);
+    } else {
+      setIsToggleItemQuantity(
+        isToggleItemQuantity.filter((item: string) => item !== name)
+      );
     }
   };
 
@@ -94,7 +107,7 @@ function ShoppingList() {
                   )}
                   {!isToggleEdit ? (
                     <div className="item-controller">
-                      {isToggleItemQuantity ? (
+                      {isToggleItemQuantity.includes(item.name) ? (
                         <div className="item-controller active">
                           {" "}
                           <div
@@ -113,7 +126,7 @@ function ShoppingList() {
                             -
                           </button>
                           <button
-                            onClick={() => setIsToggleItemQuantity(false)}
+                            onClick={() => handleToggleItemQuantity(item.name)}
                             className="item-quantity"
                           >
                             {item?.quantity}pcs
@@ -129,7 +142,7 @@ function ShoppingList() {
                         </div>
                       ) : (
                         <button
-                          onClick={() => setIsToggleItemQuantity(true)}
+                          onClick={() => handleToggleItemQuantity(item?.name)}
                           className="item-quantity"
                         >
                           {item?.quantity}pcs
@@ -138,10 +151,7 @@ function ShoppingList() {
                     </div>
                   ) : (
                     <div className="item-controller">
-                      <button
-                        onClick={() => setIsToggleItemQuantity(false)}
-                        className="item-quantity"
-                      >
+                      <button className="item-quantity">
                         {item.quantity}pcs
                       </button>
                     </div>

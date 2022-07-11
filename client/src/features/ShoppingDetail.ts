@@ -32,39 +32,10 @@ const ShoppingDetailSlice = createSlice({
         shoppingDetailName: action.payload,
       };
     },
-    increaseQuantity: (state: any, action: any) => {
-      return {
-        ...state,
-        items: state.items.map((item: ItemLists) =>
-          item.name === action.payload
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item
-        ),
-      };
-    },
-    decreaseQuantity: (state: any, action: any) => {
-      
-      return {
-        ...state,
-        items: state.items.map((item: ItemLists) =>
-          item.name === action.payload
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        ),
-      };
-    },
   },
 });
 
 export default ShoppingDetailSlice.reducer;
 
-export const {
-  addNewShoppingDetail,
-  decreaseQuantity,
-  increaseQuantity,
-  addName,
-  addItem,
-} = ShoppingDetailSlice.actions;
+export const { addNewShoppingDetail, addName, addItem } =
+  ShoppingDetailSlice.actions;

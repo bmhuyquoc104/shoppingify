@@ -37,7 +37,9 @@ const itemSelectedSlice = createSlice({
         element.name === action.payload
           ? {
               ...element,
-              quantity: parseInt(`${element.quantity === 0 ? 0 : element.quantity! -1}`),
+              quantity: parseInt(
+                `${element.quantity === 0 ? 0 : element.quantity! - 1}`
+              ),
             }
           : element
       );
