@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addUniqueItem } from "../../features/ItemSelected";
 import { MdKeyboardBackspace } from "react-icons/md";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDeleteItem } from "../../hooks/useItems";
 import { useGetItem } from "../../hooks/useItems";
 import ItemDetailStyled from "./ItemDetail.styled";
 
@@ -18,6 +19,9 @@ function ItemDetail() {
 
   // Declare dispatch to use function from reducer
   const dispatch = useDispatch();
+
+  // Get property from custom delete hook
+  const { mutate } = useDeleteItem();
 
   // Render when the data is fetching
   if (isLoading) {
@@ -57,7 +61,15 @@ function ItemDetail() {
         </div>
       </div>
       <div className="controller">
-        <button className="delete">delete</button>
+        <button
+          onClick={() => {
+            mutate(item?._id);
+            navigate("/", { replace: true });
+          }}
+          className="delete"
+        >
+          delete
+        </button>
         <button
           onClick={() => {
             navigate("/");

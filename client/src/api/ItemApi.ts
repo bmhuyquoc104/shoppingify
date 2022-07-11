@@ -2,7 +2,8 @@ import axios from "axios";
 import { Item } from "../models/Item";
 // Declare base url
 const api = axios.create({
-  baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
+  // baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
+  baseURL:"http://localhost:3333",
 });
 
 // Function to get all items from the api
@@ -14,4 +15,9 @@ const getItem = (id: string) => api.get(`items/${id}`).then((res) => res.data);
 // Function to add item
 const addItem = (item: Item) =>
   api.post("/items", item).then((res) => res.data);
-export { getAllItems, getItem, addItem };
+
+// Function to delete item
+const deleteItem = (id: string) =>
+  api.delete(`/items/${id}`).then((res) => res.data);
+
+export { getAllItems, getItem, addItem, deleteItem };

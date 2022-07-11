@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { getAllItems, getItem, addItem } from "../api/ItemApi";
+import { getAllItems, getItem, addItem, deleteItem } from "../api/ItemApi";
 
 // Custom hook to fetch all items
 const useGetAllItems = () => {
@@ -39,4 +39,17 @@ const useAddItem = () => {
   });
 };
 
-export { useGetAllItems, useGetItem, useAddItem };
+// Custom hook to delete item
+const useDeleteItem = () => {
+  const queryClient = useQueryClient();
+  return useMutation(deleteItem, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["items"]);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+};
+
+export { useGetAllItems, useGetItem, useAddItem, useDeleteItem };
