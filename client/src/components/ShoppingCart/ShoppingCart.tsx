@@ -41,13 +41,7 @@ function ShoppingCart() {
       mutate(shoppingDetail);
     }
   };
-
-  // Function to handle cancel
-  const handleCancel = () => {
-    dispatch(addStatus("cancelled"));
-    dispatch(addCreateAt(new Date()));
-    console.log(shoppingDetail);
-  };
+ 
 
   return (
     <ShoppingCartStyled>
@@ -76,7 +70,14 @@ function ShoppingCart() {
       </div>
       {isToggleEdit ? (
         <div className="shopping-controller complete">
-          <button onClick={() => setIsToggleCancel(true)} className="cancel">
+          <button
+            onClick={() => {
+              setIsToggleCancel(true);
+              dispatch(addStatus("cancelled"));
+              console.log(shoppingDetail);
+            }}
+            className="cancel"
+          >
             cancel
           </button>
           <button onClick={handleComplete} className="complete">
