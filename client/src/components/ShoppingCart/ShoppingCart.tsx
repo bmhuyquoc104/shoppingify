@@ -15,7 +15,8 @@ function ShoppingCart() {
   const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
   const dispatch = useDispatch();
   // Get property from the use context
-  const { isToggleEdit, setIsToggleCancel } = useContext(ToggleContext);
+  const { isToggleEdit, setIsToggleCancel, setIsToggleEdit } =
+    useContext(ToggleContext);
   // Declare state to track edit button status
   const [isSaved, setIsSaved] = useState(false);
   const inputRef = useRef<any>();

@@ -18,7 +18,12 @@ const ShoppingDetailSlice = createSlice({
     addItem: (state: any, action: any) => {
       return {
         ...state,
-        items: action.payload,
+        items: state.items
+          .concat(action.payload)
+          .filter(
+            (element: any, index: number, arr: any) =>
+              index === arr.findIndex((t: any) => t.name === element.name)
+          ),
       };
     },
     addName: (state: any, action: any) => {
@@ -30,24 +35,24 @@ const ShoppingDetailSlice = createSlice({
     increaseQuantity: (state: any, action: any) => {
       return {
         ...state,
-        items: state.items.map(
-          (item: ItemLists) =>
-            (item._id = action.payload && {
-              ...item,
-              quantity: item.quantity + 1,
-            })
+        items: state.items.map((item: ItemLists) =>
+          item.name === action.payload
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
         ),
       };
     },
     decreaseQuantity: (state: any, action: any) => {
+      
       return {
         ...state,
-        items: state.item.map(
-          (item: ItemLists) =>
-            item._id === action.payload && {
-              ...item,
-              quantity: item.quantity - 1,
-            }
+        items: state.items.map((item: ItemLists) =>
+          item.name === action.payload
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
         ),
       };
     },

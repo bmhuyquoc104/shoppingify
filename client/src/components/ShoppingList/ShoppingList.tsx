@@ -5,12 +5,12 @@ import { FiTrash } from "react-icons/fi";
 import { useEffect, useState, useContext } from "react";
 import ShoppingListStyled from "./ShoppingList.styled";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItemChoice } from "../../features/ItemSelected";
 import {
+  deleteItemChoice,
   increaseQuantity,
   decreaseQuantity,
-  addItem,
-} from "../../features/ShoppingDetail";
+} from "../../features/ItemSelected";
+import { addItem } from "../../features/ShoppingDetail";
 import { Item } from "../../models/Item";
 import { ToggleContext } from "../../hooks/useToggleContext";
 
@@ -18,7 +18,7 @@ function ShoppingList() {
   // Declare use selector and use dispatch to use the value and action in the item reducer
   const itemChoice = useSelector((state: any) => state.itemSelected);
   const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
-  console.log(shoppingDetail);
+  console.log(itemChoice);
   // const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
   // console.log(shoppingDetail);
   const dispatch = useDispatch();
@@ -49,6 +49,7 @@ function ShoppingList() {
 
   //Get the properties from the useContext
   const { isToggleEdit, setIsToggleEdit } = useContext(ToggleContext);
+  console.log(itemChoice);
 
   return (
     <ShoppingListStyled>
@@ -91,34 +92,60 @@ function ShoppingList() {
                   ) : (
                     <div className="item-name">{item?.name}</div>
                   )}
-                  <div className="item-controller">
-                    {isToggleItemQuantity ? (
-                      <div className="item-controller active">
-                        {" "}
-                        <div
-                          onClick={() => dispatch(deleteItemChoice(item.name))}
-                          className="trash-container"
-                        >
-                          <FiTrash className="trash" />
+                  {!isToggleEdit ? (
+                    <div className="item-controller">
+                      {isToggleItemQuantity ? (
+                        <div className="item-controller active">
+                          {" "}
+                          <div
+                            onClick={() =>
+                              dispatch(deleteItemChoice(item.name))
+                            }
+                            className="trash-container"
+                          >
+                            <FiTrash className="trash" />
+                          </div>
+                          <button
+                            onClick={() =>
+                              dispatch(decreaseQuantity(item.name))
+                            }
+                          >
+                            -
+                          </button>
+                          <button
+                            onClick={() => setIsToggleItemQuantity(false)}
+                            className="item-quantity"
+                          >
+                            {item?.quantity}pcs
+                          </button>
+                          <button
+                            onClick={() =>
+                              dispatch(increaseQuantity(item.name))
+                            }
+                            className="plus"
+                          >
+                            +
+                          </button>
                         </div>
-                        <button>-</button>
+                      ) : (
                         <button
-                          onClick={() => setIsToggleItemQuantity(false)}
+                          onClick={() => setIsToggleItemQuantity(true)}
                           className="item-quantity"
                         >
-                          1pcs
+                          {item?.quantity}pcs
                         </button>
-                        <button className="plus">+</button>
-                      </div>
-                    ) : (
+                      )}
+                    </div>
+                  ) : (
+                    <div className="item-controller">
                       <button
-                        onClick={() => setIsToggleItemQuantity(true)}
+                        onClick={() => setIsToggleItemQuantity(false)}
                         className="item-quantity"
                       >
-                        1 pcs
+                        {item.quantity}pcs
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               ))}
           </>

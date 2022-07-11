@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addUniqueItem } from "../../features/ItemSelected";
+import { addItem } from "../../features/ShoppingDetail";
 import { MdKeyboardBackspace } from "react-icons/md";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDeleteItem } from "../../hooks/useItems";
@@ -79,6 +80,15 @@ function ItemDetail() {
                 category: item?.category,
                 notes: item?.notes,
                 image: item?.image,
+                quantity:1
+              })
+            );
+            dispatch(
+              addItem({
+                name: item?.name,
+                category: item?.category,
+                quantity: 1,
+                _id:item?._id,
               })
             );
           }}

@@ -33,7 +33,6 @@ function ItemList() {
     }
   }, [items]);
 
-
   // Check if the fetch data has error or not
   if (isError) {
     <h1>{`Error:${error}`}</h1>;
@@ -59,6 +58,7 @@ function ItemList() {
                             note: item.note,
                             category: item.category,
                             image: item.image,
+                            quantity: 1,
                           })
                         )
                       }

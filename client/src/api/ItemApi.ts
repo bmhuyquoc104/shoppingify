@@ -2,8 +2,8 @@ import axios from "axios";
 import { Item } from "../models/Item";
 // Declare base url
 const api = axios.create({
-  // baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
-  baseURL:"http://localhost:3333",
+  baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
+  // baseURL:"http://localhost:3333",
 });
 
 // Function to get all items from the api

@@ -1,37 +1,8 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const initialValue = {
-//   name: "",
-//   category: "",
-//   note: "",
-//   image: "",
-// };
-
-// const ItemChoiceSlice = createSlice({
-//   name: "itemChoice",
-//   initialState: initialValue,
-//   reducers: {
-//     addUniqueItem: (state: any, action) => {
-//       return state
-//         .concat(action.payload)
-//         .filter(
-//           (element: any, index: any, arr: any) => arr.indexOf(element) === index
-//         );
-//     },
-//     deleteItem: (state: any, action) => {
-//       return state.filter((element: any) => element._id !== action.payload);
-//     },
-//   },
-// });
-
-// export default ItemChoiceSlice.reducer;
-// export const { addUniqueItem, deleteItem } = ItemChoiceSlice.actions;
-
 import { createSlice } from "@reduxjs/toolkit";
 import { Item } from "../models/Item";
 
 // Declare the initial value for item
-const initialValue: Item[] = [];
+const initialValue: any[] = [];
 
 // Slice function to extract reducer functions
 const itemSelectedSlice = createSlice({
@@ -43,7 +14,7 @@ const itemSelectedSlice = createSlice({
       return state
         .concat(action.payload)
         .filter(
-          (element: Item, index: number, arr: Item[]) =>
+          (element: any, index: number, arr: any[]) =>
             index === arr.findIndex((t: Item) => t.name === element.name)
         );
     },
@@ -51,8 +22,33 @@ const itemSelectedSlice = createSlice({
     deleteItemChoice: (state: any, action) => {
       return state.filter((element: Item) => element.name !== action.payload);
     },
+    increaseQuantity: (state: any, action) => {
+      return state.map((element: Item) =>
+        element.name === action.payload
+          ? {
+              ...element,
+              quantity: element.quantity! + 1,
+            }
+          : element
+      );
+    },
+    decreaseQuantity: (state: any, action) => {
+      return state.map((element: Item) =>
+        element.name === action.payload
+          ? {
+              ...element,
+              quantity: parseInt(`${element.quantity === 0 ? 0 : element.quantity! -1}`),
+            }
+          : element
+      );
+    },
   },
 });
 
 export default itemSelectedSlice.reducer;
-export const { addUniqueItem, deleteItemChoice } = itemSelectedSlice.actions;
+export const {
+  addUniqueItem,
+  deleteItemChoice,
+  increaseQuantity,
+  decreaseQuantity,
+} = itemSelectedSlice.actions;

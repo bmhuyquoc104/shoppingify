@@ -5,6 +5,7 @@ export type Item = {
   note?: string;
   category: string;
   _id?: string;
+  quantity?: number;
 };
 
 export type ItemList = {
