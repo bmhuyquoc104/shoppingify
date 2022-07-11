@@ -1,7 +1,8 @@
 import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addName } from "../../features/ShoppingDetail";
+import { addName, addStatus, addCreateAt } from "../../features/ShoppingDetail";
+import { useAddNewShoppingDetail } from "../../hooks/useShoppingDetail";
 import { imageResources } from "../../assets/imageResources";
 import { ToggleContext } from "../../hooks/useToggleContext";
 import ShoppingCartStyled from "./ShoppingCart.styled";
@@ -20,6 +21,34 @@ function ShoppingCart() {
   // Declare state to track edit button status
   const [isSaved, setIsSaved] = useState(false);
   const inputRef = useRef<any>();
+
+  const { mutate } = useAddNewShoppingDetail();
+
+  const setStatus = () => {
+    return new Promise((resolve, reject) => {
+      resolve(dispatch(addStatus("completed")));
+    });
+  };
+
+  // Function to handle complete button
+  const handleComplete = () => {
+    if (shoppingDetail.shoppingDetailName == "") {
+      console.log("name d9ang rong");
+    } else if (shoppingDetail.items.length <= 0) {
+      console.log("item rong");
+    } else {
+      console.log(shoppingDetail);
+      mutate(shoppingDetail);
+    }
+  };
+
+  // Function to handle cancel
+  const handleCancel = () => {
+    dispatch(addStatus("cancelled"));
+    dispatch(addCreateAt(new Date()));
+    console.log(shoppingDetail);
+  };
+
   return (
     <ShoppingCartStyled>
       <div className="shopping-list">
@@ -50,7 +79,9 @@ function ShoppingCart() {
           <button onClick={() => setIsToggleCancel(true)} className="cancel">
             cancel
           </button>
-          <button className="complete">Complete</button>
+          <button onClick={handleComplete} className="complete">
+            Complete
+          </button>
         </div>
       ) : (
         <div className="shopping-controller">

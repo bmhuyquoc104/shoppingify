@@ -3,8 +3,9 @@ import { ShoppingDetail, ItemLists } from "../models/ShoppingDetail";
 
 const initialValue: ShoppingDetail = {
   shoppingDetailName: "",
-  status: "",
+  status: "completed",
   items: [],
+  createdAt:new Date(),
 };
 
 //
@@ -26,10 +27,30 @@ const ShoppingDetailSlice = createSlice({
           ),
       };
     },
+    removeItem: (state: any, action: any) => {
+      return {
+        ...state,
+        items: state.items.filter(
+          (item: ItemLists) => item.name !== action.payload
+        ),
+      };
+    },
     addName: (state: any, action: any) => {
       return {
         ...state,
         shoppingDetailName: action.payload,
+      };
+    },
+    addStatus: (state: any, action: any) => {
+      return {
+        ...state,
+        status: action.payload,
+      };
+    },
+    addCreateAt: (state: any, action: any) => {
+      return {
+        ...state,
+        createdAt: action.payload,
       };
     },
   },
@@ -37,5 +58,11 @@ const ShoppingDetailSlice = createSlice({
 
 export default ShoppingDetailSlice.reducer;
 
-export const { addNewShoppingDetail, addName, addItem } =
-  ShoppingDetailSlice.actions;
+export const {
+  addNewShoppingDetail,
+  addName,
+  addItem,
+  removeItem,
+  addStatus,
+  addCreateAt,
+} = ShoppingDetailSlice.actions;

@@ -28,7 +28,11 @@ const ShoppingListStyled = styled.div`
       color: ${({ theme }) => theme.placeholder.color};
       font-weight: 500;
     }
-
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
     .item-container {
       display: flex;
       justify-content: space-between;
@@ -69,8 +73,8 @@ const ShoppingListStyled = styled.div`
         color: ${({ theme }) => theme.text.color};
         font-weight: 500;
       }
-      .item-name.checked{
-        text-decoration:line-through;
+      .item-name.checked {
+        text-decoration: line-through;
       }
       .item-controller {
         .item-quantity {

@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import itemChoiceReducer from "./features/ItemSelected";
+
 import shoppingDetailReducer from "./features/ShoppingDetail";
 import App from "./App";
 
@@ -15,6 +16,8 @@ const store = configureStore({
     itemSelected: itemChoiceReducer,
     shoppingDetail: shoppingDetailReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

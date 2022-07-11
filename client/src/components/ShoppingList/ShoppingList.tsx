@@ -10,7 +10,12 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "../../features/ItemSelected";
-import { addItem } from "../../features/ShoppingDetail";
+import {
+  addItem,
+  removeItem,
+  addStatus,
+  addCreateAt,
+} from "../../features/ShoppingDetail";
 import { Item } from "../../models/Item";
 import { ToggleContext } from "../../hooks/useToggleContext";
 
@@ -18,7 +23,6 @@ function ShoppingList() {
   // Declare use selector and use dispatch to use the value and action in the item reducer
   const itemChoice = useSelector((state: any) => state.itemSelected);
   const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
-  console.log(itemChoice);
   // const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
   // console.log(shoppingDetail);
   const dispatch = useDispatch();
@@ -62,7 +66,6 @@ function ShoppingList() {
 
   //Get the properties from the useContext
   const { isToggleEdit, setIsToggleEdit } = useContext(ToggleContext);
-  console.log(itemChoice);
 
   return (
     <ShoppingListStyled>
@@ -76,16 +79,27 @@ function ShoppingList() {
       </div>
       <div className="item-category">
         {categories?.map((category: string, index: number) => (
-          <>
-            <h3 key={index}>{category}</h3>
+          <div className="container" key={index}>
+            <h3>{category}</h3>
             {itemChoice
               ?.filter((item: Item) => item.category === category)
               ?.map((item: Item) => (
-                <div key={item._id} className="item-container">
+                <div key={item.name} className="item-container">
                   {isToggleEdit ? (
-                    <div key={item._id} className="edit-name">
+                    <div className="edit-name">
                       <div
-                        onClick={() => handleAdd(item.name)}
+                        onClick={() => {
+                          handleAdd(item.name);
+                          !isCheckedItems.includes(item.name)
+                            ? dispatch(
+                                addItem({
+                                  name: item.name,
+                                  quantity: item.quantity,
+                                  category: item.category,
+                                })
+                              )
+                            : dispatch(removeItem(item.name));
+                        }}
                         className={
                           isCheckedItems.includes(item.name)
                             ? "square-checked"
@@ -158,7 +172,7 @@ function ShoppingList() {
                   )}
                 </div>
               ))}
-          </>
+          </div>
         ))}
       </div>
     </ShoppingListStyled>
