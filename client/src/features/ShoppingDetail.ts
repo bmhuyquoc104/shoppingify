@@ -5,7 +5,7 @@ const initialValue: ShoppingDetail = {
   shoppingDetailName: "",
   status: "completed",
   items: [],
-  createdAt:new Date(),
+  createdAt: new Date(),
 };
 
 //
@@ -41,6 +41,12 @@ const ShoppingDetailSlice = createSlice({
         shoppingDetailName: action.payload,
       };
     },
+    removeName: (state: any) => {
+      return {
+        ...state,
+        shoppingDetailName: "",
+      };
+    },
     addStatus: (state: any, action: any) => {
       return {
         ...state,
@@ -65,4 +71,5 @@ export const {
   removeItem,
   addStatus,
   addCreateAt,
+  removeName,
 } = ShoppingDetailSlice.actions;

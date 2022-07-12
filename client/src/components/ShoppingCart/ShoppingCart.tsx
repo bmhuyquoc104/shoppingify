@@ -1,7 +1,7 @@
 import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addName, addStatus, addCreateAt } from "../../features/ShoppingDetail";
+import { addName, addStatus, removeName } from "../../features/ShoppingDetail";
 import { useAddNewShoppingDetail } from "../../hooks/useShoppingDetail";
 import { imageResources } from "../../assets/imageResources";
 import { ToggleContext } from "../../hooks/useToggleContext";
@@ -16,33 +16,29 @@ function ShoppingCart() {
   const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
   const dispatch = useDispatch();
   // Get property from the use context
-  const { isToggleEdit, setIsToggleCancel, setIsToggleEdit } =
-    useContext(ToggleContext);
+  const {
+    isToggleEdit,
+    setIsToggleCancel,
+    setIsToggleEdit,
+    setIsToggleWarning,
+  } = useContext(ToggleContext);
   // Declare state to track edit button status
   const [isSaved, setIsSaved] = useState(false);
   const inputRef = useRef<any>();
-
   const { mutate } = useAddNewShoppingDetail();
-
-  const setStatus = () => {
-    return new Promise((resolve, reject) => {
-      resolve(dispatch(addStatus("completed")));
-    });
-  };
 
   // Function to handle complete button
   const handleComplete = () => {
     if (shoppingDetail.shoppingDetailName == "") {
-      console.log("name d9ang rong");
+      setIsToggleWarning(true);
     } else if (shoppingDetail.items.length <= 0) {
-      console.log("item rong");
+      setIsToggleWarning(true);
     } else {
-      console.log(shoppingDetail);
       mutate(shoppingDetail);
     }
   };
- 
 
+  console.log(inputRef?.current?.value);
   return (
     <ShoppingCartStyled>
       <div className="shopping-list">
@@ -97,6 +93,7 @@ function ShoppingCart() {
                 onClick={() => {
                   setIsSaved(false);
                   inputRef.current.value = "";
+                  dispatch(removeName());
                 }}
               >
                 Change
@@ -104,12 +101,40 @@ function ShoppingCart() {
             </>
           ) : (
             <>
-              <input
-                onChange={(e: any) => dispatch(addName(e.target.value))}
-                type="text"
-                placeholder="Enter a name"
-              />
-              <button onClick={() => setIsSaved(true)}>Save</button>
+              {shoppingDetail?.shoppingDetailName !== "" ? (
+                <>
+                  <input
+                    readOnly
+                    value={`Name: ${shoppingDetail.shoppingDetailName}`}
+                    ref={inputRef}
+                  />
+                  <button
+                    onClick={() => {
+                      setIsSaved(false);
+                      dispatch(removeName());
+                      inputRef.current.value = "";
+                    }}
+                  >
+                    Change
+                  </button>
+                </>
+              ) : (
+                <>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder="Enter a name"
+                  />
+                  <button
+                    onClick={() => {
+                      setIsSaved(true);
+                      dispatch(addName(inputRef.current.value));
+                    }}
+                  >
+                    Save
+                  </button>
+                </>
+              )}
             </>
           )}
         </div>
