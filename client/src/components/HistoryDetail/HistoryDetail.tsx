@@ -58,7 +58,7 @@ function HistoryDetail() {
         </div>
         <div className="item-container">
           {categories?.map((category: string, index: number) => (
-            <div>
+            <div key={index}>
               <h3 className="item category">{category}</h3>
               <div className="item">
                 {detail?.items

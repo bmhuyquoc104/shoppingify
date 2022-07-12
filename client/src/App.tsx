@@ -16,12 +16,17 @@ import { ToggleContext } from "./hooks/useToggleContext";
 import Cancel from "./components/PopUp/Cancel";
 import { AbsoluteFlexContainerStyled } from "./components/Container/AbsoluteFlexContainer";
 import HistoryDetail from "./pages/HistoryDetail";
+import { useSelector } from "react-redux";
+import Warning from "./components/PopUp/Warning/Warning";
 
 function App() {
   const [theme, themeToggler] = useTheme();
   const [isToggleEdit, setIsToggleEdit] = useState(false);
   const [isToggleCancel, setIsToggleCancel] = useState(false);
+  const [isToggleWarning, setIsToggleWarning] = useState(false);
+
   const themeMode = theme === "lightTheme" ? lightTheme : darkTheme;
+  const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyled />
@@ -32,6 +37,8 @@ function App() {
           setIsToggleEdit,
           isToggleCancel,
           setIsToggleCancel,
+          setIsToggleWarning,
+          isToggleWarning,
         }}
       >
         <Routes>
@@ -60,6 +67,16 @@ function App() {
         {isToggleCancel && (
           <AbsoluteFlexContainerStyled>
             <Cancel />
+          </AbsoluteFlexContainerStyled>
+        )}
+        {isToggleWarning && shoppingDetail.name !== "" && (
+          <AbsoluteFlexContainerStyled>
+            <Warning type="isEmptyName" />
+          </AbsoluteFlexContainerStyled>
+        )}
+        {isToggleWarning && shoppingDetail.items.length <= 0 && (
+          <AbsoluteFlexContainerStyled>
+            <Warning  />
           </AbsoluteFlexContainerStyled>
         )}
       </ToggleContext.Provider>
