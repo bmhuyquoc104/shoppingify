@@ -122,6 +122,7 @@ const ShoppingCartStyled = styled.section`
       border-radius: 12px;
       background-color: ${({ theme }) => theme.placeholder.color};
       color: ${({ theme }) => theme.header.backgroundColor};
+      cursor: pointer;
     }
   }
   .shopping-controller.complete {

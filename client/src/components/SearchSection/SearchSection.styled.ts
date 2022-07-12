@@ -45,25 +45,27 @@ const SearchSectionStyled = styled.section`
   }
   @media (max-width: 1137px) {
     padding: 2em 0;
+    justify-content: revert;
+    gap: 0.2em;
     h1 {
-      width: 25ch;
+      width: 18ch;
       font-size: 1.35rem;
       letter-spacing: 0.15px;
     }
     .search-button {
-      width: 15em;
+      width: 14em;
     }
   }
 
-  @media (max-width:750px){
+  @media (max-width: 750px) {
     padding: 1em 1.25em;
-
   }
-  @media (max-width: 927px) {
-    gap:1em;
+  @media (max-width: 950px) {
+    gap: 1em;
     justify-content: revert;
     flex-direction: column;
-    .search-button,h1 {
+    .search-button,
+    h1 {
       width: 80%;
     }
   }

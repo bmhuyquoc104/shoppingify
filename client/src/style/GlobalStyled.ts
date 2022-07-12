@@ -34,7 +34,8 @@ box-sizing:border-box;
   --clr_text_placeholder_color_dark:#424242;
   --clr_item_bg_dark:#EB5757;
   --clr_header_button_dark:#bababa;
-  --clr_shopping_list_bg_dark:#fff0de;
+  --clr_shopping_list_bg_dark:#000f21
+;
   --clr_shopping_list_category_dark:#7d7d7d;
   --clr_complete_button_bg_dark:#56ccf2
   --clr_shopping_list_footer_bg_dark:rgba(255,255,255,0.1);
