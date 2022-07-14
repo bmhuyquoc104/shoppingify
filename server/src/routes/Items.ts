@@ -15,5 +15,5 @@ router
   .route("/:id")
   .get(getItemByIdMiddleWare, getItemById)
   .delete(getItemByIdMiddleWare, deleteItem);
-router.route("/name/:name").get(getItemByName);
+router.route("/name").post(getItemByName);
 export default router;

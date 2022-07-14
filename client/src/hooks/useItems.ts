@@ -1,5 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { getAllItems, getItem, addItem, deleteItem } from "../api/ItemApi";
+import {
+  getAllItems,
+  getItem,
+  addItem,
+  deleteItem,
+  getItemByName,
+} from "../api/ItemApi";
 
 // Custom hook to fetch all items
 const useGetAllItems = () => {
@@ -52,4 +58,22 @@ const useDeleteItem = () => {
   });
 };
 
-export { useGetAllItems, useGetItem, useAddItem, useDeleteItem };
+// Custom hook to search item
+const useGetItemByName = () => {
+  const queryClient = useQueryClient();
+  return useMutation(getItemByName, {
+    onSuccess: (data) => {
+      queryClient.setQueryData("items", () => {
+        return data;
+      });
+    },
+  });
+};
+
+export {
+  useGetAllItems,
+  useGetItem,
+  useAddItem,
+  useDeleteItem,
+  useGetItemByName,
+};

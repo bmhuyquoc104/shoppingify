@@ -76,24 +76,22 @@ exports.deleteItem = deleteItem;
 // Function to search by name
 const getItemByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(req.params.name);
         let items;
-        if (req.params.name === "all-items") {
+        let name = req.body.name;
+        console.log(name);
+        if (name == "") {
             items = yield Items_1.ItemModel.find();
         }
         else {
             items = yield Items_1.ItemModel.find({
-                "name": {
-                    $regex: `${req.params.name}`,
+                name: {
+                    $regex: `${name}`,
                     $options: "i",
                 },
             });
         }
         if (items != null) {
             res.status(200).send(items);
-        }
-        else {
-            res.status(404).send("There are no current items for this option");
         }
     }
     catch (error) {

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState, useEffect } from "react";
-import { useGetAllItems } from "../../hooks/useItems";
+import { useGetAllItems, useGetItemByName } from "../../hooks/useItems";
 import { Item } from "../../models/Item";
 import { addUniqueItem } from "../../features/ItemSelected";
 import ItemListStyled from "./ItemList.styled";
@@ -13,8 +13,9 @@ function ItemList() {
   // Declare navigate for routing
   const navigate = useNavigate();
   // Get properties from the custom hook
+  const [query, setQuery] = useState("");
   const {
-    data: items,
+    data:items,
     error,
     isError,
     isLoading,
@@ -23,12 +24,22 @@ function ItemList() {
   if (isLoading) {
     <h1>Loading ...</h1>;
   }
+  const { mutate } = useGetItemByName();
+  // Display when data is loading
+  if (isLoading) {
+    <div>loading</div>;
+  }
+  // Display when data is error
+  if (isError) {
+    <h1>{`Error: ${error}`}</h1>;
+  }
+  console.log(items)
   // Declare state for categories
   const [categories, setCategories] = useState<any>([]);
   // Use effect to assign value to categories when the data is fetch successfully
   useEffect(() => {
     if (isSuccess) {
-      const arr = [...new Set(items.map((item: Item) => item.category))];
+      const arr = [...new Set(items?.map((item: Item) => item.category))];
       setCategories(arr);
     }
   }, [items]);
@@ -37,16 +48,23 @@ function ItemList() {
   if (isError) {
     <h1>{`Error:${error}`}</h1>;
   }
-
   return (
     <ItemListStyled>
+      <input
+        onChange={(e: any) => {
+          let data:any = {name: e.target.value}
+          console.log(e.target.value);
+          mutate(data);
+        }}
+      />
+
       {categories?.map((category: String, index: number) => (
         <div className="category-container" key={index}>
           <h2>{category}</h2>
           <ul className="item-container">
             {items
               ?.filter((item: Item) => item.category === category)
-              .map((item: Item) => (
+              ?.map((item: Item) => (
                 <li key={item._id}>
                   <>
                     <p onClick={() => navigate(`${item._id}`)}>{item.name}</p>

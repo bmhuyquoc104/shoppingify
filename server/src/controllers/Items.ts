@@ -58,14 +58,15 @@ const deleteItem = async (req: Request, res: Response) => {
 // Function to search by name
 const getItemByName = async (req: Request, res: Response) => {
   try {
-    console.log(req.params.name);
     let items;
-    if (req.params.name === "all-items") {
+    let name = req.body.name;
+    console.log(name)
+    if (name == "") {
       items = await ItemModel.find();
     } else {
       items = await ItemModel.find({
-        "name": {
-          $regex: `${req.params.name}`,
+        name: {
+          $regex: `${name}`,
           $options: "i",
         },
       });
@@ -73,8 +74,6 @@ const getItemByName = async (req: Request, res: Response) => {
 
     if (items != null) {
       res.status(200).send(items);
-    } else {
-      res.status(404).send("There are no current items for this option");
     }
   } catch (error) {
     res.status(500).send("Internal server");
