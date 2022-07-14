@@ -13,4 +13,5 @@ router
     .route("/:id")
     .get(GetItemByIdMW_1.getItemByIdMiddleWare, Items_1.getItemById)
     .delete(GetItemByIdMW_1.getItemByIdMiddleWare, Items_1.deleteItem);
+router.route("/name/:name").get(Items_1.getItemByName);
 exports.default = router;

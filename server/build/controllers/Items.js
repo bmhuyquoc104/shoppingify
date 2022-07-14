@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
+exports.getItemByName = exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
 const Items_1 = require("../models/Items");
 // Function to get all items
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -73,3 +73,31 @@ const deleteItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.deleteItem = deleteItem;
+// Function to search by name
+const getItemByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.params.name);
+        let items;
+        if (req.params.name === "all-items") {
+            items = yield Items_1.ItemModel.find();
+        }
+        else {
+            items = yield Items_1.ItemModel.find({
+                "name": {
+                    $regex: `${req.params.name}`,
+                    $options: "i",
+                },
+            });
+        }
+        if (items != null) {
+            res.status(200).send(items);
+        }
+        else {
+            res.status(404).send("There are no current items for this option");
+        }
+    }
+    catch (error) {
+        res.status(500).send("Internal server");
+    }
+});
+exports.getItemByName = getItemByName;

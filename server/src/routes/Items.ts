@@ -3,6 +3,7 @@ import {
   getAllItems,
   getItemById,
   addItem,
+  getItemByName,
   deleteItem,
 } from "../controllers/Items";
 import { getItemByIdMiddleWare } from "../middleware/GetItemByIdMW";
@@ -14,4 +15,5 @@ router
   .route("/:id")
   .get(getItemByIdMiddleWare, getItemById)
   .delete(getItemByIdMiddleWare, deleteItem);
+router.route("/name/:name").get(getItemByName);
 export default router;
