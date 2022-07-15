@@ -7,7 +7,7 @@ import ShoppingDetailRouter from "./routes/ShoppingDetail";
 
 // Declare app, port , and mongo URI
 const app: Express = express();
-const PORT: number = 3333;
+const PORT: number = process.env.PORT || 3333;
 const MONGO_URI = process.env.MONGO_URI!;
 
 // Connect to mongoDB
