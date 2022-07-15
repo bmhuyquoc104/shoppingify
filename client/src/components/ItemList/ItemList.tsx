@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { useGetAllItems, useGetItemByName } from "../../hooks/useItems";
@@ -15,7 +15,7 @@ function ItemList() {
   // Get properties from the custom hook
   const [query, setQuery] = useState("");
   const {
-    data:items,
+    data: items,
     error,
     isError,
     isLoading,
@@ -24,7 +24,6 @@ function ItemList() {
   if (isLoading) {
     <h1>Loading ...</h1>;
   }
-  const { mutate } = useGetItemByName();
   // Display when data is loading
   if (isLoading) {
     <div>loading</div>;
@@ -33,7 +32,7 @@ function ItemList() {
   if (isError) {
     <h1>{`Error: ${error}`}</h1>;
   }
-  console.log(items)
+  console.log(items);
   // Declare state for categories
   const [categories, setCategories] = useState<any>([]);
   // Use effect to assign value to categories when the data is fetch successfully
@@ -50,14 +49,6 @@ function ItemList() {
   }
   return (
     <ItemListStyled>
-      <input
-        onChange={(e: any) => {
-          let data:any = {name: e.target.value}
-          console.log(e.target.value);
-          mutate(data);
-        }}
-      />
-
       {categories?.map((category: String, index: number) => (
         <div className="category-container" key={index}>
           <h2>{category}</h2>

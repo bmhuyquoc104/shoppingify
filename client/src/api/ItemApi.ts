@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Item } from "../models/Item";
+import { QueryByName } from "../models/Item";
 // Declare base url
 const api = axios.create({
   // baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
@@ -21,7 +22,7 @@ const deleteItem = (id: string) =>
   api.delete(`/items/${id}`).then((res) => res.data);
 
 // Function to search item by name
-const getItemByName = (name: string) =>
+const getItemByName = (name: QueryByName) =>
   api.post(`/items/name/`, name).then((res) => res.data);
 
 export { getAllItems, getItem, addItem, deleteItem, getItemByName };

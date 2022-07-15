@@ -14,3 +14,7 @@ export type ItemList = {
   quantity: string;
   name: string;
 };
+
+export type QueryByName = {
+  name: string;
+}
