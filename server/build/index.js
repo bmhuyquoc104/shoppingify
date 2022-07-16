@@ -11,7 +11,7 @@ const Items_1 = __importDefault(require("./routes/Items"));
 const ShoppingDetail_1 = __importDefault(require("./routes/ShoppingDetail"));
 // Declare app, port , and mongo URI
 const app = (0, express_1.default)();
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 const MONGO_URI = process.env.MONGO_URI;
 // Connect to mongoDB
 mongoose_1.default.connect(MONGO_URI, {

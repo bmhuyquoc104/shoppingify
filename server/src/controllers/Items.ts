@@ -1,5 +1,6 @@
 import { ItemModel, ItemType } from "../models/Items";
 import { Request, Response, NextFunction } from "express";
+import { ShoppingDetailModel } from "../models/ShoppingDetail";
 
 // Function to get all items
 const getAllItems = async (req: Request, res: Response) => {
@@ -60,7 +61,7 @@ const getItemByName = async (req: Request, res: Response) => {
   try {
     let items;
     let name = req.body.name;
-    console.log(name)
+    console.log(name);
     if (name == "") {
       items = await ItemModel.find();
     } else {
@@ -80,4 +81,35 @@ const getItemByName = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllItems, getItemById, addItem, deleteItem, getItemByName };
+// Function to get the best selling item
+const getTopSellingItems = async (req: Request, res: Response) => {
+  try {
+    const items = await ShoppingDetailModel.aggregate([
+      { $group: { _id: "$items.category", count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+
+      {
+        $group: {
+          _id: 1,
+          Category: { $push: { Category: "$_id", count: "$count" } },
+        },
+      },
+    ]);
+    if (items != null) {
+      res.status(200).send(items);
+    } else {
+      res.status(404).send("Not Found");
+    }
+  } catch (error: any) {
+    res.status(500).send(error.message);
+  }
+};
+
+export {
+  getAllItems,
+  getItemById,
+  addItem,
+  deleteItem,
+  getItemByName,
+  getTopSellingItems,
+};

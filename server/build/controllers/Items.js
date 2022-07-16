@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getItemByName = exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
+exports.getTopSellingItems = exports.getItemByName = exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
 const Items_1 = require("../models/Items");
+const ShoppingDetail_1 = require("../models/ShoppingDetail");
 // Function to get all items
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -99,3 +100,28 @@ const getItemByName = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.getItemByName = getItemByName;
+// Function to get the best selling item
+const getTopSellingItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const items = yield ShoppingDetail_1.ShoppingDetailModel.aggregate([
+            { $group: { _id: "$items.category", count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+                $group: {
+                    _id: 1,
+                    Category: { $push: { Category: "$_id", count: "$count" } },
+                },
+            },
+        ]);
+        if (items != null) {
+            res.status(200).send(items);
+        }
+        else {
+            res.status(404).send("Not Found");
+        }
+    }
+    catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+exports.getTopSellingItems = getTopSellingItems;
