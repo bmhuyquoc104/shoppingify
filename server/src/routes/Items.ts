@@ -3,7 +3,7 @@ import {
   getAllItems,
   getItemById,
   addItem,
-  getTopSellingItems,
+  getTopSellingItemsByField,
   getItemByName,
   deleteItem,
 } from "../controllers/Items";
@@ -12,7 +12,7 @@ import { getItemByIdMiddleWare } from "../middleware/GetItemByIdMW";
 const router = express.Router();
 
 router.route("/").get(getAllItems).post(addItem);
-router.route("/most-common").get(getTopSellingItems);
+router.route("/topItems").post(getTopSellingItemsByField);
 router
   .route("/:id")
   .get(getItemByIdMiddleWare, getItemById)

@@ -82,18 +82,39 @@ const getItemByName = async (req: Request, res: Response) => {
 };
 
 // Function to get the best selling item
-const getTopSellingItems = async (req: Request, res: Response) => {
+const getTopSellingItemsByField = async (req: Request, res: Response) => {
   try {
+    const field = req.body.field;
     const items = await ShoppingDetailModel.aggregate([
-      { $group: { _id: "$items.category", count: { $sum: 1 } } },
-      { $sort: { count: -1 } },
-
+      { $unwind: "$items" },
       {
         $group: {
-          _id: 1,
-          Category: { $push: { Category: "$_id", count: "$count" } },
+          _id: {
+            quantity: "$items.quantity",
+            [field]: `$items.${field}`,
+          },
+          quantityCount: { $sum: 1 },
         },
       },
+      {
+        $group: {
+          _id: `$_id.${field}`,
+          quantities: {
+            $push: {
+              quantity: "$_id.quantity",
+              count: "$quantityCount",
+              itemCount: { $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } },
+            },
+          },
+          totalCount: { $sum: { $add: [{ $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } }] } },
+        },
+      },
+      {
+        $sort: {
+          count: -1,
+        },
+      },
+      { $limit: 3 },
     ]);
     if (items != null) {
       res.status(200).send(items);
@@ -111,5 +132,5 @@ export {
   addItem,
   deleteItem,
   getItemByName,
-  getTopSellingItems,
+  getTopSellingItemsByField,
 };

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTopSellingItems = exports.getItemByName = exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
+exports.getTopSellingItemsByField = exports.getItemByName = exports.deleteItem = exports.addItem = exports.getItemById = exports.getAllItems = void 0;
 const Items_1 = require("../models/Items");
 const ShoppingDetail_1 = require("../models/ShoppingDetail");
 // Function to get all items
@@ -101,17 +101,39 @@ const getItemByName = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.getItemByName = getItemByName;
 // Function to get the best selling item
-const getTopSellingItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getTopSellingItemsByField = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const field = req.body.field;
         const items = yield ShoppingDetail_1.ShoppingDetailModel.aggregate([
-            { $group: { _id: "$items.category", count: { $sum: 1 } } },
-            { $sort: { count: -1 } },
+            { $unwind: "$items" },
             {
                 $group: {
-                    _id: 1,
-                    Category: { $push: { Category: "$_id", count: "$count" } },
+                    _id: {
+                        quantity: "$items.quantity",
+                        [field]: `$items.${field}`,
+                    },
+                    quantityCount: { $sum: 1 },
                 },
             },
+            {
+                $group: {
+                    _id: `$_id.${field}`,
+                    quantities: {
+                        $push: {
+                            quantity: "$_id.quantity",
+                            count: "$quantityCount",
+                            itemCount: { $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } },
+                        },
+                    },
+                    totalCount: { $sum: { $add: [{ $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } }] } },
+                },
+            },
+            {
+                $sort: {
+                    count: -1,
+                },
+            },
+            { $limit: 3 },
         ]);
         if (items != null) {
             res.status(200).send(items);
@@ -124,4 +146,4 @@ const getTopSellingItems = (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.status(500).send(error.message);
     }
 });
-exports.getTopSellingItems = getTopSellingItems;
+exports.getTopSellingItemsByField = getTopSellingItemsByField;
