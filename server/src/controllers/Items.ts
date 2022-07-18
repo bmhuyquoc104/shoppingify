@@ -111,7 +111,7 @@ const getTopSellingItemsByField = async (req: Request, res: Response) => {
       },
       {
         $sort: {
-          count: -1,
+          totalCount: -1,
         },
       },
       { $limit: 3 },

@@ -130,7 +130,7 @@ const getTopSellingItemsByField = (req, res) => __awaiter(void 0, void 0, void 0
             },
             {
                 $sort: {
-                    count: -1,
+                    totalCount: -1,
                 },
             },
             { $limit: 3 },
