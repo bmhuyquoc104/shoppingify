@@ -87,31 +87,75 @@ const getTopSellingItemsByField = async (req: Request, res: Response) => {
     const field = req.body.field;
     const items = await ShoppingDetailModel.aggregate([
       { $unwind: "$items" },
+
       {
         $group: {
-          _id: {
-            quantity: "$items.quantity",
-            [field]: `$items.${field}`,
+          _id: `$items.${field}`,
+          total: {
+            $sum: "$items.quantity",
           },
-          quantityCount: { $sum: 1 },
         },
       },
       {
         $group: {
-          _id: `$_id.${field}`,
-          quantities: {
+          _id: 1,
+          item: {
             $push: {
-              quantity: "$_id.quantity",
-              count: "$quantityCount",
-              itemCount: { $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } },
+              quantity: "$total",
+              name: "$_id",
             },
           },
-          totalCount: { $sum: { $add: [{ $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } }] } },
+          all: {
+            $sum: "$total",
+          },
         },
       },
+      { $unwind: "$item" },
+      {
+        $project: {
+          _id: 1,
+          item: 1,
+          all:1,
+          percentage: { $round: [{ $multiply: [{ $divide: ["$item.quantity", "$all"] }, 100 ]},1]},
+        },
+      },
+
+      // {
+      //   $group: {
+      //     _id: {
+      //       quantity: "$items.quantity",
+      //       [field]: `$items.${field}`,
+      //     },
+      //     quantityCount: { $sum: 1 },
+      //   },
+      // },
+      // {
+      //   $group: {
+      //     _id: `$_id.${field}`,
+      //     quantities: {
+      //       $push: {
+      //         quantity: "$_id.quantity",
+      //         count: "$quantityCount",
+      //         name:`$_id.${field}`,
+      //         total: "$total",
+      //         itemCount: {
+      //           $sum: { $multiply: ["$_id.quantity", "$quantityCount"] },
+      //         },
+      //       },
+      //     },
+      //     totalCount: {
+      //       $sum: {
+      //         $add: [
+      //           { $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } },
+      //         ],
+      //       },
+      //     },
+      //   },
+      // },
+
       {
         $sort: {
-          totalCount: -1,
+          percentage: -1,
         },
       },
       { $limit: 3 },
