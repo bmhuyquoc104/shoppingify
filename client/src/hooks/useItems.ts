@@ -4,6 +4,7 @@ import {
   getItem,
   addItem,
   deleteItem,
+  getTopItemsByCondition,
   getItemByName,
 } from "../api/ItemApi";
 
@@ -70,10 +71,26 @@ const useGetItemByName = () => {
   });
 };
 
+// Custom hook to get top items by condition
+const useGetTopItemsByCondition = (condition: string) => {
+  const queryClient = useQueryClient();
+  return useMutation(getTopItemsByCondition, {
+    onSuccess: (data) => {
+      queryClient.setQueryData([`top-items-by${condition}`], () => {
+        return data;
+      });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+};
+
 export {
   useGetAllItems,
   useGetItem,
   useAddItem,
   useDeleteItem,
   useGetItemByName,
+  useGetTopItemsByCondition,
 };

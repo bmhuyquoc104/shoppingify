@@ -1,9 +1,10 @@
 import axios from "axios";
 import { Item } from "../models/Item";
-import { QueryByName } from "../models/Item";
+import { QueryByName, Condition } from "../models/Item";
 // Declare base url
 const api = axios.create({
-  baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/"
+  // baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
+  baseURL: "http://localhost:8000",
 });
 
 // Function to get all items from the api
@@ -24,4 +25,15 @@ const deleteItem = (id: string) =>
 const getItemByName = (name: QueryByName) =>
   api.post(`/items/name/`, name).then((res) => res.data);
 
-export { getAllItems, getItem, addItem, deleteItem, getItemByName };
+// Function to get top item by condition
+const getTopItemsByCondition = (condition: Condition) =>
+  api.post("items/topItems", condition).then((res) => res.data);
+
+export {
+  getAllItems,
+  getItem,
+  addItem,
+  deleteItem,
+  getItemByName,
+  getTopItemsByCondition,
+};

@@ -17,4 +17,8 @@ export type ItemList = {
 
 export type QueryByName = {
   name: string;
-}
+};
+
+export type Condition = {
+  field: string;
+};
