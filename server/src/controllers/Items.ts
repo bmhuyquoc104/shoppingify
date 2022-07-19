@@ -115,43 +115,15 @@ const getTopSellingItemsByField = async (req: Request, res: Response) => {
         $project: {
           _id: 1,
           item: 1,
-          all:1,
-          percentage: { $round: [{ $multiply: [{ $divide: ["$item.quantity", "$all"] }, 100 ]},1]},
+          all: 1,
+          percentage: {
+            $round: [
+              { $multiply: [{ $divide: ["$item.quantity", "$all"] }, 100] },
+              1,
+            ],
+          },
         },
       },
-
-      // {
-      //   $group: {
-      //     _id: {
-      //       quantity: "$items.quantity",
-      //       [field]: `$items.${field}`,
-      //     },
-      //     quantityCount: { $sum: 1 },
-      //   },
-      // },
-      // {
-      //   $group: {
-      //     _id: `$_id.${field}`,
-      //     quantities: {
-      //       $push: {
-      //         quantity: "$_id.quantity",
-      //         count: "$quantityCount",
-      //         name:`$_id.${field}`,
-      //         total: "$total",
-      //         itemCount: {
-      //           $sum: { $multiply: ["$_id.quantity", "$quantityCount"] },
-      //         },
-      //       },
-      //     },
-      //     totalCount: {
-      //       $sum: {
-      //         $add: [
-      //           { $sum: { $multiply: ["$_id.quantity", "$quantityCount"] } },
-      //         ],
-      //       },
-      //     },
-      //   },
-      // },
 
       {
         $sort: {
@@ -170,6 +142,66 @@ const getTopSellingItemsByField = async (req: Request, res: Response) => {
   }
 };
 
+// Function to get the array of sales monthly
+const getSalesPerYear = async (req: Request, res: Response) => {
+  const year = req.body.year;
+  try {
+    const items = await ShoppingDetailModel.aggregate([
+      {
+        $project: {
+          createdAt: 1,
+          items: 1,
+          month: { $month: "$createdAt" },
+          year: { $year: "$createdAt" },
+        },
+      },
+      {
+        $match: { year: { $gte: year } },
+      },
+      { $unwind: "$items" },
+      {
+        $group: {
+          _id: {
+            month: "$month",
+            year: "$year",
+          },
+
+          total: { $sum: "$items.quantity" },
+        },
+      },
+      {
+        $project: {
+          year: "$_id.year",
+          month: "$_id.month",
+          total: 1,
+
+          key: {
+            $concat: [
+              { $toString: "$_id.month" },
+              "/",
+              { $toString: "$_id.year" },
+            ],
+          },
+          _id: 0,
+        },
+      },
+      {
+        $sort: {
+          year: -1,
+          month: -1,
+        },
+      },
+    ]);
+    if (items != null) {
+      res.status(200).send(items);
+    } else {
+      res.status(404).send("Not found ");
+    }
+  } catch (error: any) {
+    res.status(500).send(error.message);
+  }
+};
+
 export {
   getAllItems,
   getItemById,
@@ -177,4 +209,5 @@ export {
   deleteItem,
   getItemByName,
   getTopSellingItemsByField,
+  getSalesPerYear,
 };

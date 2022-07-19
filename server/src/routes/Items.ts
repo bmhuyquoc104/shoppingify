@@ -6,6 +6,7 @@ import {
   getTopSellingItemsByField,
   getItemByName,
   deleteItem,
+  getSalesPerYear,
 } from "../controllers/Items";
 import { getItemByIdMiddleWare } from "../middleware/GetItemByIdMW";
 // Declare the router
@@ -13,6 +14,7 @@ const router = express.Router();
 
 router.route("/").get(getAllItems).post(addItem);
 router.route("/topItems").post(getTopSellingItemsByField);
+router.route("/sale").post(getSalesPerYear);
 router
   .route("/:id")
   .get(getItemByIdMiddleWare, getItemById)
