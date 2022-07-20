@@ -6,6 +6,7 @@ import {
   deleteItem,
   getTopItemsByCondition,
   getItemByName,
+  getMonthlySalesByYear,
 } from "../api/ItemApi";
 
 // Custom hook to fetch all items
@@ -86,6 +87,21 @@ const useGetTopItemsByCondition = (condition: string) => {
   });
 };
 
+// Custom hook to get monthly sale by year
+const useGetMonthlySaleByYear = () => {
+  const queryClient = useQueryClient();
+  return useMutation(getMonthlySalesByYear, {
+    onSuccess: (data) => {
+      queryClient.setQueryData([`sale-monthly-items`], () => {
+        return data;
+      });
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+};
+
 export {
   useGetAllItems,
   useGetItem,
@@ -93,4 +109,5 @@ export {
   useDeleteItem,
   useGetItemByName,
   useGetTopItemsByCondition,
+  useGetMonthlySaleByYear,
 };

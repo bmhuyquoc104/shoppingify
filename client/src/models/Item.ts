@@ -22,3 +22,7 @@ export type QueryByName = {
 export type Condition = {
   field: string;
 };
+
+export type Year = {
+  year: number;
+}

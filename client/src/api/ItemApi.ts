@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Item } from "../models/Item";
-import { QueryByName, Condition } from "../models/Item";
+import { QueryByName, Condition, Year } from "../models/Item";
 // Declare base url
 const api = axios.create({
   baseURL: "https://bmhuyquoc104-shoppingify.herokuapp.com/",
@@ -29,6 +29,10 @@ const getItemByName = (name: QueryByName) =>
 const getTopItemsByCondition = (condition: Condition) =>
   api.post("items/topItems", condition).then((res) => res.data);
 
+// Function to get the sale monthly by year
+const getMonthlySalesByYear = (year: Year) =>
+  api.post("/items/sale", year).then((res) => res.data);
+
 export {
   getAllItems,
   getItem,
@@ -36,4 +40,5 @@ export {
   deleteItem,
   getItemByName,
   getTopItemsByCondition,
+  getMonthlySalesByYear,
 };
