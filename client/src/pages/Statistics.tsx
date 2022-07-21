@@ -3,15 +3,15 @@ import { Outlet } from "react-router-dom";
 import ProgressBar from "../components/ProgressBarSection/ProgressBarSection";
 import ChartSection from "../components/ChartSection/ChartSection";
 import HistoryContainerStyled from "../components/Container/HistoryContainer";
-import PageContainerStyled from "../components/Container/PageContainer";
+import StatisticContainerStyled from "../components/Container/StatisticContainer";
 
 function Statistics() {
   return (
-    <PageContainerStyled>
+    <StatisticContainerStyled>
       <ProgressBar />
-      <ChartSection />
+      <ChartSection/>
       <Outlet />
-    </PageContainerStyled>
+    </StatisticContainerStyled>
   );
 }
 

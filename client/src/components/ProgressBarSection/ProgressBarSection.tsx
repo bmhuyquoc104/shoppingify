@@ -23,14 +23,13 @@ function ProgressBarSection() {
   // Initialize 2 arrays to store the data
   const categoryArr: any = queryClient.getQueryData("top-items-byCategory");
   const nameArr: any = queryClient.getQueryData("top-items-byName");
-  console.log(nameArr);
 
   return (
     <ProgressBarSectionStyled>
       <div className="container">
         <h2>Top items</h2>
-        {nameArr?.map((element: any) => (
-          <div className="item" key={element?.name}>
+        {nameArr?.map((element: any,index: number) => (
+          <div className="item" key={index}>
             <div className="title">
               <h3 className = "name">{element?.item?.name}</h3>
               <h3 className = "percentage">{element?.percentage}%</h3>
@@ -44,8 +43,8 @@ function ProgressBarSection() {
       </div>
       <div className="container">
         <h2>Top Categories</h2>
-        {categoryArr?.map((element: any) => (
-          <div className="item" key={element?.name}>
+        {categoryArr?.map((element: any,index:number) => (
+          <div className="item" key={index}>
             <div className="title">
               <h3 className = "name">{element?.item?.name}</h3>
               <h3 className = "percentage">{element?.percentage}%</h3>
@@ -57,6 +56,7 @@ function ProgressBarSection() {
           </div>
         ))}
       </div>
+      
     </ProgressBarSectionStyled>
   );
 }
