@@ -10,4 +10,13 @@ const formatDate2 = (date: Date) => {
   return dateFormat;
 };
 
-export { formatDate, formatDate2 };
+const formatDateFromNumber = (monthNumber: number) => {
+  const date = new Date();
+  date.setMonth(monthNumber - 1);
+
+  return date.toLocaleString("en-US", {
+    month: "short",
+  });
+};
+
+export { formatDate, formatDate2, formatDateFromNumber };
