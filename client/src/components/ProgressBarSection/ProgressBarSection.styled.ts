@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ProgressBarStyled = styled.section`
   display: flex;
   justify-content: space-between;
-  padding: 2em 3em;
+  padding: 2em 3em 0 3em;
   width: 100%;
 
   .container {

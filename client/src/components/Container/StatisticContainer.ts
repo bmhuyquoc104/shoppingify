@@ -6,7 +6,7 @@ const StatisticContainerStyled = styled.div`
   gap: 1em;
   width: 100%;
   grid-template-columns: minmax(350px, 1fr) 24em;
-  /* grid-template-rows: 16vh 1fr; */
+  grid-template-rows: 22vh 1fr;
   grid-template-areas:
     "search-section shopping-cart"
     "item-list  shopping-cart";
@@ -29,6 +29,8 @@ const StatisticContainerStyled = styled.div`
     grid-template-columns: minmax(350px, 1fr) 24em;
   }
   @media (max-width:750px){
+    grid-template-rows: revert;
+
     margin-left: 5.2em;
     grid-template-columns:1fr;
     grid-template-areas:

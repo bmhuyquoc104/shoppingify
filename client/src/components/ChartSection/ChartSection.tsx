@@ -38,14 +38,10 @@ function ChartSection() {
   console.log(month);
 
   const options = {
-    responsive: true,
+    responsive: true, 
     plugins: {
       legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
+        position: "bottom" as const,
       },
     },
   };
@@ -61,16 +57,18 @@ function ChartSection() {
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: "items",
+        lineTension:0.8,
         data: dataL,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "#F9A109",
+        backgroundColor: "#F9A109",
       },
     ],
   };
   return (
     <ChartSectionStyled>
-      <Line options={options} data={data} />
+     <h2>Monthly Summary</h2>
+      <Line height = {120} options={options} data={data} />
     </ChartSectionStyled>
   );
 }
