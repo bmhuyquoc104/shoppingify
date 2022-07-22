@@ -10,6 +10,9 @@ const itemSelectedSlice = createSlice({
   initialState: initialValue,
   reducers: {
     // Function to add only unique item to the item choice arr
+    clearAll: () => {
+      return initialValue;
+    },
     addUniqueItem: (state: any, action) => {
       return state
         .concat(action.payload)
@@ -53,4 +56,5 @@ export const {
   deleteItemChoice,
   increaseQuantity,
   decreaseQuantity,
+  clearAll,
 } = itemSelectedSlice.actions;

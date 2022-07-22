@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addName, addStatus, removeName } from "../../features/ShoppingDetail";
 import { useAddNewShoppingDetail } from "../../hooks/useShoppingDetail";
+import { clearAll } from "../../features/ItemSelected";
 import { imageResources } from "../../assets/imageResources";
 import { ToggleContext } from "../../hooks/useToggleContext";
 import ShoppingCartStyled from "./ShoppingCart.styled";
@@ -35,6 +36,10 @@ function ShoppingCart() {
       setIsToggleWarning(true);
     } else {
       mutate(shoppingDetail);
+      dispatch(clearAll());
+      dispatch(removeName());
+      setIsToggleEdit(false);
+      setIsSaved(false);
     }
   };
 

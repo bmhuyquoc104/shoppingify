@@ -6,7 +6,6 @@ const StatisticContainerStyled = styled.div`
   gap: 1em;
   width: 100%;
   grid-template-columns: minmax(350px, 1fr) 24em;
-  grid-template-rows: 22vh 1fr;
   grid-template-areas:
     "search-section shopping-cart"
     "item-list  shopping-cart";
