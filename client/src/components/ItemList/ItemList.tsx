@@ -6,7 +6,6 @@ import { useGetAllItems, useGetItemByName } from "../../hooks/useItems";
 import { Item } from "../../models/Item";
 import { addUniqueItem } from "../../features/ItemSelected";
 import ItemListStyled from "./ItemList.styled";
-import BaseSkeleton from "../Skeleton/BaseSkeleton";
 import ItemListSkeleton from "../Skeleton/ItemListSkeleton/ItemListSkeleton";
 
 function ItemList() {
@@ -28,7 +27,6 @@ function ItemList() {
   if (isError) {
     <h1>{`Error: ${error}`}</h1>;
   }
-  console.log(items);
   // Declare state for categories
   const [categories, setCategories] = useState<any>([]);
   // Use effect to assign value to categories when the data is fetch successfully

@@ -13,8 +13,6 @@ import {
 import {
   addItem,
   removeItem,
-  addStatus,
-  addCreateAt,
 } from "../../features/ShoppingDetail";
 import { Item } from "../../models/Item";
 import { ToggleContext } from "../../hooks/useToggleContext";
@@ -22,8 +20,7 @@ import { ToggleContext } from "../../hooks/useToggleContext";
 function ShoppingList() {
   // Declare use selector and use dispatch to use the value and action in the item reducer
   const itemChoice = useSelector((state: any) => state.itemSelected);
-  const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
-  // const shoppingDetail = useSelector((state: any) => state.shoppingDetail);
+  console.log(itemChoice);
   // console.log(shoppingDetail);
   const dispatch = useDispatch();
 

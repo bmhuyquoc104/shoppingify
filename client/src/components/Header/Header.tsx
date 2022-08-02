@@ -7,16 +7,30 @@ import { MdReplay } from "react-icons/md";
 import { HiOutlineMoon } from "react-icons/hi";
 import { MdOutlineWbSunny } from "react-icons/md";
 import HeaderStyled from "./Header.styled";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
+// Declare props type for components
 type HeaderProps = {
   themeToggler: any;
   theme: any;
 };
 
 function Header({ themeToggler, theme }: HeaderProps) {
-  // declare navigate variable for routing between pages
+  // Get the item selected from item selected feature using selector 
+  let selector = useSelector((state: any) => state.itemSelected);
+  // use state for checking status of item count
+  let [itemCount, setItemCount] = useState(0);
 
-  let itemCount = 3;
+  useEffect(() => {
+    if (selector === undefined) {
+      setItemCount(0);
+    } else {
+      setItemCount(selector.length);
+    }
+  }, [selector]);
+  
+  // Set styled for react icon
   const moonStyled = {
     color: "var(--clr_header_button_light)",
     fontSize: "1.75rem",
@@ -35,6 +49,7 @@ function Header({ themeToggler, theme }: HeaderProps) {
     padding: "0.23em",
     justifyContent: "center",
   };
+  
   return (
     <HeaderStyled>
       <div className="header-top">
