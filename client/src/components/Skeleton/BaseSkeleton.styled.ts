@@ -15,6 +15,10 @@ const BaseSkeletonStyled = styled.div`
     width: max(120px, 10em);
     height: 50px;
   }
+  &.history-detail-title {
+    width: max(150px, 11.375em);
+    height: 35px;
+  }
   &.calendar,
   &.name {
     width: max(91px, 5em);
@@ -28,6 +32,11 @@ const BaseSkeletonStyled = styled.div`
   &.arrow {
     width: max(15px, 0.75em);
     height: 15px;
+  }
+
+  &.progress{
+    width:100%;
+    height:15px;
   }
 
   @media (max-width: 950px) and (min-width: 750px) {

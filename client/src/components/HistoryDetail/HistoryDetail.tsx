@@ -7,6 +7,7 @@ import { ShoppingDetail } from "../../models/ShoppingDetail";
 import { formatDate2 } from "../../helpers/formatDate";
 import HistoryDetailStyled from "./HistoryDetail.styled";
 import { ItemList } from "../../models/Item";
+import HistoryDetailSkeleton from "../Skeleton/HistoryDetail/HistoryDetail";
 
 function HistoryDetail() {
   //Declare navigate for routing
@@ -35,7 +36,7 @@ function HistoryDetail() {
 
   // Render when data is loading
   if (isLoading) {
-    return <h1>Loading ...</h1>;
+    return <HistoryDetailSkeleton />;
   }
 
   // Render when data is error
