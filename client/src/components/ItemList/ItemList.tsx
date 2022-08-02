@@ -6,6 +6,8 @@ import { useGetAllItems, useGetItemByName } from "../../hooks/useItems";
 import { Item } from "../../models/Item";
 import { addUniqueItem } from "../../features/ItemSelected";
 import ItemListStyled from "./ItemList.styled";
+import BaseSkeleton from "../Skeleton/BaseSkeleton";
+import ItemListSkeleton from "../Skeleton/ItemListSkeleton/ItemListSkeleton";
 
 function ItemList() {
   // Declare useDispatch to use function in the redux store
@@ -21,13 +23,7 @@ function ItemList() {
     isLoading,
     isSuccess,
   } = useGetAllItems();
-  if (isLoading) {
-    <h1>Loading ...</h1>;
-  }
-  // Display when data is loading
-  if (isLoading) {
-    <div>loading</div>;
-  }
+
   // Display when data is error
   if (isError) {
     <h1>{`Error: ${error}`}</h1>;
@@ -78,6 +74,12 @@ function ItemList() {
           </ul>
         </div>
       ))}
+      {isLoading && 
+      <div>
+        {[1,2,3].map((n:number) => (
+          <ItemListSkeleton key={n}></ItemListSkeleton>
+        ))}
+        </div>}
     </ItemListStyled>
   );
 }

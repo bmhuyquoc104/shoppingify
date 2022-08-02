@@ -29,6 +29,12 @@ declare module "styled-components" {
     item: {
       backgroundColor: string;
     };
+    skeleton:{
+      backgroundColor: string;
+      wrapper:{
+        backgroundColor: string;
+      }
+    },
     shoppingList: {
       backgroundColor: string;
       category: {

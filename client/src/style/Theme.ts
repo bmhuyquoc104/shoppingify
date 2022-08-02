@@ -26,6 +26,12 @@ const lightTheme = {
   item: {
     backgroundColor: "var(--clr_item_bg_light)",
   },
+  skeleton:{
+    backgroundColor: "var(--clr_skeleton_bg_light)",
+    wrapper:{
+      backgroundColor: "var(--clr_skeleton_wrapper_bg_light)"
+    }
+  },
   shoppingList: {
     backgroundColor: "var(--clr_shopping_list_bg_light)",
     category: {
@@ -70,6 +76,12 @@ const darkTheme = {
   },
   item: {
     backgroundColor: "var(--clr_item_bg_dark)",
+  },
+  skeleton:{
+    backgroundColor: "var(--clr_skeleton_bg_dark)",
+    wrapper:{
+      backgroundColor: "var(--clr_skeleton_wrapper_bg_dark)"
+    }
   },
   shoppingList: {
     backgroundColor: "var(--clr_shopping_list_bg_dark)",

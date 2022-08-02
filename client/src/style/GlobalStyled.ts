@@ -23,6 +23,8 @@ box-sizing:border-box;
   --clr_complete_button_bg_light:#56ccf2
   --clr_shopping_list_footer_bg_light:rgba(0,0,0,0.1);
   --clr_shopping_list_options_bg_light:#F2F2F2;
+  --clr_skeleton_bg_light:#ddd;
+  --clr_skeleton_wrapper_bg_light:#f2f2f2;
 
   /* Dark theme */
   --clr_header_bg_dark:#000000;
@@ -34,13 +36,13 @@ box-sizing:border-box;
   --clr_text_placeholder_color_dark:#424242;
   --clr_item_bg_dark:#EB5757;
   --clr_header_button_dark:#bababa;
-  --clr_shopping_list_bg_dark:#000f21
-;
+  --clr_shopping_list_bg_dark:#000f21;
   --clr_shopping_list_category_dark:#7d7d7d;
   --clr_complete_button_bg_dark:#56ccf2
   --clr_shopping_list_footer_bg_dark:rgba(255,255,255,0.1);
   --clr_shopping_list_options_bg_dark:#7d7d7d;
-
+  --clr_skeleton_bg_dark:#444;
+  --clr_skeleton_wrapper_bg_dark:#777;
 }
 
 #root{
