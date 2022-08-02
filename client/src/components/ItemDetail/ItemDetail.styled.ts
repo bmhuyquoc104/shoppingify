@@ -95,10 +95,88 @@ const ItemDetailStyled = styled.section`
     position: revert;
     min-height: auto;
     right: revert;
-    .main-content{
+    .main-content {
       height: auto;
     }
   }
 `;
 
-export default ItemDetailStyled;
+const ItemDetailSkeletonStyled = styled.section`
+  display: flex;
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.skeleton.wrapper.backgroundColor};
+  flex-direction: column;
+  gap: 2em;
+  padding: 2em 2.5em;
+  position: fixed;
+  right: 0;
+  width: 24em;
+  .back {
+    display: flex;
+    align-items: center;
+    width: 3em;
+    border: none;
+    height: 1em;
+    background-color: ${({ theme }) => theme.skeleton.backgroundColor};
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    gap: 2em;
+    overflow-y: scroll;
+  }
+
+  .item-image {
+    width: 100%;
+    height: 220px;
+    border-radius: 25px;
+    background-color: ${({ theme }) => theme.skeleton.backgroundColor};
+  }
+
+  .item-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75em;
+    height: 50vh;
+    h3 {
+      background-color: ${({ theme }) => theme.skeleton.backgroundColor};
+      width: 4em;
+      height: 15px;
+    }
+    p {
+      background-color: ${({ theme }) => theme.skeleton.backgroundColor};
+      width: 100%;
+      height: 30px;
+    }
+    .category {
+      height: 25vh !important;
+    }
+  }
+  .controller {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    align-items: center;
+    .add,
+    .delete {
+      font-weight: 700;
+      font-size: 1rem;
+      background-color: ${({ theme }) => theme.skeleton.backgroundColor};
+      padding: 1.5em 2.5em;
+      border: none;
+      border-radius: 12px;
+    }
+  }
+  @media (max-width: 750px) {
+    width: 100%;
+    position: revert;
+    min-height: auto;
+    right: revert;
+    .main-content {
+      height: auto;
+    }
+  }
+`;
+
+export { ItemDetailStyled, ItemDetailSkeletonStyled };
