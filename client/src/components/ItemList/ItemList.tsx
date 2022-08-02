@@ -75,7 +75,7 @@ function ItemList() {
         </div>
       ))}
       {isLoading && 
-      <div>
+      <div style = {{display:"flex", gap:"1em",flexDirection:"column"}}>
         {[1,2,3].map((n:number) => (
           <ItemListSkeleton key={n}></ItemListSkeleton>
         ))}
