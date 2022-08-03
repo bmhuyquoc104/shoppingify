@@ -9,6 +9,7 @@ import { MdOutlineWbSunny } from "react-icons/md";
 import HeaderStyled from "./Header.styled";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import UserProfile from "./UserProfile/UserProfile";
 
 // Declare props type for components
 type HeaderProps = {
@@ -17,11 +18,12 @@ type HeaderProps = {
 };
 
 function Header({ themeToggler, theme }: HeaderProps) {
-  // Get the item selected from item selected feature using selector 
+  // Get the item selected from item selected feature using selector
   let selector = useSelector((state: any) => state.itemSelected);
   // use state for checking status of item count
   let [itemCount, setItemCount] = useState(0);
-
+  // use state for toggle avatar button
+  const [isShow, setIsShow] = useState(false);
   useEffect(() => {
     if (selector === undefined) {
       setItemCount(0);
@@ -29,7 +31,7 @@ function Header({ themeToggler, theme }: HeaderProps) {
       setItemCount(selector.length);
     }
   }, [selector]);
-  
+
   // Set styled for react icon
   const moonStyled = {
     color: "var(--clr_header_button_light)",
@@ -49,17 +51,24 @@ function Header({ themeToggler, theme }: HeaderProps) {
     padding: "0.23em",
     justifyContent: "center",
   };
-  
+
   return (
     <HeaderStyled>
       <div className="header-top">
         <img src={imageResources.Logo} alt="Logo" />
+        <img
+          onClick={() => setIsShow(true)}
+          src={imageResources.Avatar}
+          alt="Avatar"
+        />
+     
         {theme === "lightTheme" ? (
           <HiOutlineMoon onClick={themeToggler} style={moonStyled} />
         ) : (
           <MdOutlineWbSunny onClick={themeToggler} style={sunStyled} />
         )}
       </div>
+      {isShow && <UserProfile show = {isShow} onClickOutside={() => setIsShow(false)} />}
       <div className="controller">
         <div className="controller-container">
           <div className="controller-icon">

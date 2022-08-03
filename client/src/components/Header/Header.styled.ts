@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const HeaderStyled = styled.nav`
   padding: 1.5em 0em;
-  width:5em;
+  width: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,9 @@ const HeaderStyled = styled.nav`
   height: 100vh;
   position: fixed;
   z-index: 1;
-
+  /* img {
+ 
+  } */
   .controller,
   .header-top {
     display: flex;
@@ -20,7 +22,12 @@ const HeaderStyled = styled.nav`
     align-items: center;
   }
   .header-top {
-    gap: 1em;
+    gap: 2em;
+  }
+  .header-top > * {
+    width: 50%;
+      height: 100%;
+      object-fit: contain;
   }
   .cart {
     position: relative;
@@ -48,28 +55,30 @@ const HeaderStyled = styled.nav`
     }
   }
 
-  .controller,.controller-icon,.controller-container{
+  .controller,
+  .controller-icon,
+  .controller-container {
     width: 100%;
   }
   .controller-icon a {
-    width:100%;
+    width: 100%;
     display: flex;
     padding: 6px 0;
     align-items: center;
   }
-  .controller-icon a >:nth-child(2){
-    margin-left:auto;
-    margin-right:auto;
+  .controller-icon a > :nth-child(2) {
+    margin-left: auto;
+    margin-right: auto;
   }
   .controller-icon a.active {
-    .decoration{
+    .decoration {
       position: absolute;
-      padding:3px;
-      top:0;
-      left:0;
-      bottom:0;
-      background-color:#f9a109;
-      border-radius:5px;
+      padding: 3px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #f9a109;
+      border-radius: 5px;
     }
   }
   .controller-icon a {
@@ -80,7 +89,7 @@ const HeaderStyled = styled.nav`
   .controller-container {
     display: flex;
     align-items: center;
-    margin-left:auto;
+    margin-left: auto;
     .tagName,
     .triangle {
       display: none;
@@ -108,8 +117,8 @@ const HeaderStyled = styled.nav`
     left: 4.5em;
     transform: rotate(270deg);
   }
-  @media (max-width:480px){
-    width:4.2em;
+  @media (max-width: 480px) {
+    width: 4.2em;
   }
 `;
 
