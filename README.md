@@ -3,12 +3,14 @@
 <br />
 <div align="center">
 
-<h3 align="center">Shoppingify Website</h3>
+<h1 align="center">Shoppingify Website</h1>
+<h3 align="center">
 
-  <p align="center">
-    <a href="bmhuyquoc104-shoppingify.netlify.app/">View Demo</a>
-  </p>
+  [ViewDemo](https://bmhuyquoc104-shoppingify.netlify.app/)
+</h3>
+
 </div>
+
 
 
 <!-- Table of Contents -->
