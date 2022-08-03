@@ -8,6 +8,9 @@ box-sizing:border-box;
 }
 
 :root{
+  // Neutral color for both modes
+  --clr_button_text: #ffffff;
+
   /* Light theme */
   --clr_header_bg_light:#ffffff;
   --clr_button_bg_light:#f9a109;

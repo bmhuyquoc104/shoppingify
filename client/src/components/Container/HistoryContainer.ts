@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-const HistoryContainerStyled = styled.div`
+import {motion} from "framer-motion"
+const HistoryContainerStyled = styled(motion.div)`
   display: grid;
   margin-left: 6em;
   width: 100%;

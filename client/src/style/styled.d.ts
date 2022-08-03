@@ -10,6 +10,7 @@ declare module "styled-components" {
     };
     button: {
       backgroundColor: string;
+      color:string;
     };
     heading1: {
       color: string;

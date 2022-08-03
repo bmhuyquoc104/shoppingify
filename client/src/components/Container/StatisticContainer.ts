@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {motion} from "framer-motion"
 
-const StatisticContainerStyled = styled.div`
+const StatisticContainerStyled = styled(motion.div)`
   display: grid;
   margin-left: 6em;
   gap: 1em;

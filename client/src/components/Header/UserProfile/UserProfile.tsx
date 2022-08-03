@@ -5,25 +5,31 @@ import { AbsoluteFlexContainer } from "../../AbsoluteFlexContainer/AbsoluteFlexC
 import { UserProfileStyled } from "./UserProfile.styled";
 import { imageResources } from "../../../assets/imageResources";
 
+// Declare props for user profile component
 type UserProfileProps = {
   onClickOutside: () => void;
   show: boolean;
 };
 
 function UserProfile(props: UserProfileProps) {
+  // Initial the ref for component
   const ref = useRef<any>(null);
+  //  Destructure to get the passing props
   const { onClickOutside } = props;
   useEffect(() => {
+    // Function to check if the user click outside the component or not
     const handleClickOutside = (event: any) => {
       if (ref.current && !ref.current.contains(event.target)) {
         onClickOutside && onClickOutside();
       }
     };
     document.addEventListener("click", handleClickOutside, true);
+    // remove the view
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
   }, [onClickOutside]);
+  // render if not showing
   if (!props.show) return null;
 
   return (

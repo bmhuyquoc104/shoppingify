@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-const ItemListStyled = styled.section`
+import {motion} from "framer-motion"
+const ItemListStyled = styled(motion.section)`
   padding: 0 3em 2em 3em;
   width: 100%;
   display: flex;

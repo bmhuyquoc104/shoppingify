@@ -7,6 +7,7 @@ const lightTheme = {
   },
   button: {
     backgroundColor: "var(--clr_button_bg_light)",
+    color: "var(--clr_button_text)",
   },
   heading1: {
     color: "var(--clr_heading1_text_light)",
@@ -58,6 +59,7 @@ const darkTheme = {
   },
   button: {
     backgroundColor: "var(--clr_button_bg_dark)",
+    color: "var(--clr_button_text)"
   },
   heading1: {
     color: "var(--clr_heading1_text_dark)",

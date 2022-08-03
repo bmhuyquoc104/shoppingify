@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { imageResources } from "../../assets/imageResources";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdOutlineInsertChart } from "react-icons/md";
@@ -61,14 +62,19 @@ function Header({ themeToggler, theme }: HeaderProps) {
           src={imageResources.Avatar}
           alt="Avatar"
         />
-     
+
         {theme === "lightTheme" ? (
           <HiOutlineMoon onClick={themeToggler} style={moonStyled} />
         ) : (
           <MdOutlineWbSunny onClick={themeToggler} style={sunStyled} />
         )}
       </div>
-      {isShow && <UserProfile show = {isShow} onClickOutside={() => setIsShow(false)} />}
+      <AnimatePresence exitBeforeEnter>
+        {isShow && (
+          <UserProfile show={isShow} onClickOutside={() => setIsShow(false)} />
+        )}
+      </AnimatePresence>
+
       <div className="controller">
         <div className="controller-container">
           <div className="controller-icon">
