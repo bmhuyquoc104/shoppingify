@@ -14,7 +14,7 @@ const ShoppingDetail_1 = require("../models/ShoppingDetail");
 // Function to get all shopping detail
 const getAllShoppingDetail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const shoppingDetails = yield ShoppingDetail_1.ShoppingDetailModel.find();
+        const shoppingDetails = yield ShoppingDetail_1.ShoppingDetailModel.find().sort({ createdAt: -1 });
         if (shoppingDetails == null) {
             return res.status(404).send("Can not find any shopping details");
         }

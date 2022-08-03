@@ -7,8 +7,8 @@ import {
 // Function to get all shopping detail
 const getAllShoppingDetail = async (req: Request, res: Response) => {
   try {
-    const shoppingDetails: ShoppingDetailType[] =
-      await ShoppingDetailModel.find();
+    const shoppingDetails: any[] =
+      await ShoppingDetailModel.find().sort({ createdAt: -1 });
     if (shoppingDetails == null) {
       return res.status(404).send("Can not find any shopping details");
     }
