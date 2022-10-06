@@ -65,6 +65,43 @@
 - Complete item list display
 ![Complete item list](https://i.imgur.com/Xb9GU6m.png)
 
+  <div>
+    <p>Mobile website</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/OUYdFHf.png" width="500" height="700"/>
+  </div>
+
+  <div>
+    <p>Mobile shopping history</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/aCJcNn6.png" width="500" height="700"/>
+  </div>
+   <div>
+    <p>Mobile shopping history detail</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/8memzBt.png" width="500" height="700"/>
+  </div>
+  <div>
+    <p>Mobile statistic</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/8auiHJM.png" width="500" height="700"/>
+  </div>
+
+<div>
+    <p>Mobile item detail</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/4XjuMut.png" width="500" height="700"/>
+  </div>
+
+  <div>
+    <p>Mobile add new item </p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/WMlDTSq.png" width="500" height="700"/>
+  </div>
+
+  <div>
+    <p>Mobile edit item list</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/esFMAZf.png" width="500" height="700"/>
+  </div>
+
+  <div>
+    <p>Mobile complete item list</p>
+    <img style = "object-fit:contain" src = "https://i.imgur.com/uDpKMYj.png" width="500" height="700"/>
+  </div>
 <!-- TechStack -->
 ### :space_invader: Tech Stack
 
